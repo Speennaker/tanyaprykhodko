@@ -1,0 +1,165 @@
+div.main_row{
+    height: 1269px;
+}
+
+div#first_row{
+    background: url("/assets/images/main/logo_krivoe.png") 50% 50% no-repeat;
+    background-size: contain;
+
+}
+
+.main_text{
+    display: block;
+    text-align: justify;
+    font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
+
+}
+
+#first_text{
+    margin-top: 800px;
+    font-size: 36px;
+}
+
+span.author{
+    color: darkgrey;
+    text-decoration: wavy;
+    display: block;
+    text-align: right;
+}
+
+div#second_row{
+    background: url("/assets/images/main/nastya55.jpg") 50% 50% no-repeat;
+    background-size: contain;
+}
+div#third_row{
+     background: url("/assets/images/main/tanya_MAIN.jpg") 50% 50% no-repeat;
+     background-size: contain;
+
+ }
+
+#third_text{
+    font-size: 26px;
+    color: whitesmoke;
+    width: 60%;
+}
+
+div#fourth_row{
+    background: url("/assets/images/main/masha3.jpg") 50% 50% no-repeat;
+    background-size: contain;
+
+}
+
+div#fourth_row{
+    background: url("/assets/images/main/NA12.jpg") 50% 50% no-repeat;
+    background-size: contain;
+
+}
+
+div#fifth_row{
+    background: url("/assets/images/main/masha3.jpg") 50% 50% no-repeat;
+    background-size: contain;
+
+}
+
+#fifth_text{
+    font-size: 26px;
+    color: darkblue;
+    width: 50%;
+    margin: 100px 0 0 60%;
+}
+
+div#sixth_row{
+    background: url("/assets/images/main/nastya3.jpg") 50% 50% no-repeat;
+    background-size: contain;
+
+}
+
+
+
+#sixth_text{
+    font-size: 26px;
+    color: whitesmoke;
+    width: 50%;
+    margin: 100px 0 0 45%;
+}
+
+div#seventh_row{
+    background: url("/assets/images/main/skleyka_krivo.jpg") 50% 50% no-repeat;
+    background-size: contain;
+    height: 1430px !important;
+}
+
+
+div#eighth_row{
+    background: url("/assets/images/main/nadia13.jpg") 50% 50% no-repeat;
+    background-size: contain;
+}
+
+#eighth_text{
+    font-size: 26px;
+    color: whitesmoke;
+    width: 50%;
+    /*margin: 100px 0 0 45%;*/
+}
+
+#eighth_row h2{
+    color: whitesmoke;
+}
+
+#eighth_text .contacts_row{
+    margin-top: 20px;
+    vertical-align: middle;
+}
+
+#eighth_text .contacts_row span{
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+
+
+
+
+
+
+
+/*Uploading Plugin*/
+.upload_button{
+    padding-bottom: 30% !important;
+}
+
+.preview_container{
+    width: 125px;
+    position: relative;
+    margin-top: 10px;
+    background: none;
+    display: inline-block;
+}
+.preview{
+    width: 100px;
+    height: 100px;
+    position: relative;
+
+    background: url("img/loading.gif"), 50% 50% no-repeat;
+    background-color: #e1e1e1;
+    background-size: contain;
+    border: double 1px black;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.preview_container .close{
+    /*color: black;*/
+    border: 1px black solid;
+    border-radius: 20px;
+    position: absolute;
+    /*right: -15px;*/
+    /*top: -15px;*/
+    /*line-height: 100%;*/
+    /*opacity: 0.5;*/
+    /*cursor: pointer;*/
+    padding: 0 2px 2px 2px;
+    /*font-size: 150%;*/
+    right: 0;
+    top: 0;
+}
