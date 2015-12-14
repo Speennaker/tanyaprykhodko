@@ -62,6 +62,20 @@ $(document).ready(function () {
     });
 
 
+
+var blockScroller =  $(".b_sections-container").blockScroll({
+      scrollDuration:400,
+      fadeBlocks: false,
+      fadeDuration: 200
+ }); 
+
+
+$('.b_page-nav_list a').bind('click', function(e){
+  e.preventDefault();
+  var n = $(this).data('href');
+  blockScroller.goto([n]); 
+});
+
 });
 
 

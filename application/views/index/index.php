@@ -1,4 +1,47 @@
-<div class="container-fluid main_row" id="first_row">
+<div class="b_page-wrap">
+	<div class="b_sections-container">
+		<div class="b_section-wrap is-1" data-id-"1">
+			<p>1 <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero eveniet, atque nulla deleniti temporibus nostrum ea quaerat impedit nemo vero laudantium, laboriosam, soluta voluptatum officiis inventore aut! Rem repellendus nihil voluptatem fuga eaque ratione quisquam ab sed cum, aperiam dolore voluptate iure soluta, nostrum id dolorum quam, impedit voluptatum voluptatibus aut modi provident quo optio quis. Nisi sit inventore, doloribus.</p>
+		</div>
+		<div class="b_section-wrap is-2" data-id-"2">
+			<p>2 <br>	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero eveniet, atque nulla deleniti temporibus nostrum ea quaerat impedit nemo vero laudantium, laboriosam, soluta voluptatum officiis inventore aut! Rem repellendus nihil voluptatem fuga eaque ratione quisquam ab sed cum, aperiam dolore voluptate iure soluta, nostrum id dolorum quam, impedit voluptatum voluptatibus aut modi provident quo optio quis. Nisi sit inventore, doloribus.</p>
+		</div>
+		<div class="b_section-wrap is-3" data-id-"3">
+			<p>3 <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero eveniet, atque nulla deleniti temporibus nostrum ea quaerat impedit nemo vero laudantium, laboriosam, soluta voluptatum officiis inventore aut! Rem repellendus nihil voluptatem fuga eaque ratione quisquam ab sed cum, aperiam dolore voluptate iure soluta, nostrum id dolorum quam, impedit voluptatum voluptatibus aut modi provident quo optio quis. Nisi sit inventore, doloribus.</p>
+		</div>
+		<div class="b_section-wrap is-4" data-id-"4">
+			<p>4 <br>	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero eveniet, atque nulla deleniti temporibus nostrum ea quaerat impedit nemo vero laudantium, laboriosam, soluta voluptatum officiis inventore aut! Rem repellendus nihil voluptatem fuga eaque ratione quisquam ab sed cum, aperiam dolore voluptate iure soluta, nostrum id dolorum quam, impedit voluptatum voluptatibus aut modi provident quo optio quis. Nisi sit inventore, doloribus.</p>
+		</div>
+		<div class="b_section-wrap is-5" data-id-"5">
+			<p>5 <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero eveniet, atque nulla deleniti temporibus nostrum ea quaerat impedit nemo vero laudantium, laboriosam, soluta voluptatum officiis inventore aut! Rem repellendus nihil voluptatem fuga eaque ratione quisquam ab sed cum, aperiam dolore voluptate iure soluta, nostrum id dolorum quam, impedit voluptatum voluptatibus aut modi provident quo optio quis. Nisi sit inventore, doloribus.</p>
+		</div>
+		<div class="b_section-wrap is-6" data-id-"6">
+			<p>6 <br>	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero eveniet, atque nulla deleniti temporibus nostrum ea quaerat impedit nemo vero laudantium, laboriosam, soluta voluptatum officiis inventore aut! Rem repellendus nihil voluptatem fuga eaque ratione quisquam ab sed cum, aperiam dolore voluptate iure soluta, nostrum id dolorum quam, impedit voluptatum voluptatibus aut modi provident quo optio quis. Nisi sit inventore, doloribus.</p>
+		</div>
+	</div>
+
+	<div class="b_page-nav">
+		<div class="container-fluid">
+			<nav class="b_page-nav_list col-md-9">
+				<ul>
+					<li><a href="#" data-href="1">section 1</a></li>
+					<li><a href="#" data-href="2">section 2</a></li>
+					<li><a href="#" data-href="3">section 3</a></li>
+					<li><a href="#" data-href="4">section 4</a></li>
+					<li><a href="#" data-href="5">section 5</a></li>
+				</ul>
+			</nav>
+			<div class="col-md-3 text-right">
+				<a href="#" class="btn btn-xs btn-default">soc 1</a>
+				<a href="#" class="btn btn-xs btn-default">soc 2</a>
+				<a href="#" class="btn btn-xs btn-default">soc 3</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- <div class="container-fluid main_row" id="first_row">
 	<div class="main_text" id="first_text">
 		"Фотографировать может только тот, кто сумеет выстроить на одной оси глаз, голову и сердце"
 		<span class="author">Анри Картье-Брессон</span>
@@ -74,4 +117,4 @@
         <div class="contacts_row"><span class="glyphicon glyphicon-phone-alt"></span>+971553288414</div>
         <div class="contacts_row"><span class="glyphicon glyphicon-envelope"></span><a target="_top" href="mailto:info@tanyaprihodko.com">info@tanyaprihodko.com</a></div>
     </div>
-</div>
+</div> -->
