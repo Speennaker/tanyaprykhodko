@@ -9,7 +9,7 @@ assets/uploads/*
 application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
-
+assets/images/albums/*
 
 # IDE Files
 #-------------------------

@@ -11,6 +11,7 @@ abstract class MY_base_controller extends CI_Controller {
     public $languages_model;
     public $messages = [];
     public $session;
+    public $image_sizes = [];
 
     function __construct($menu_item)
     {
@@ -24,7 +25,7 @@ abstract class MY_base_controller extends CI_Controller {
     {
         // Загружаем хэдер
         $page['header'] = $this->load->view('_blocks/header', [
-            'page_title' => lang('main_title'), // Заголовок страницы
+            'page_title' => isset($data['page_title']) ? $data['page_title'] : '', // Заголовок страницы
             'custom_js' => $js, // Кастомные JS
             'custom_css' => $css, // Кастомные стили
             'menus' => $this->get_menus(), // Элементы бокового меню
@@ -42,7 +43,7 @@ abstract class MY_base_controller extends CI_Controller {
         if($return) return implode('', $page);
     }
 
-    private function get_menus()
+    protected function get_menus()
     {
         $menus = [
             [
@@ -65,11 +66,12 @@ abstract class MY_base_controller extends CI_Controller {
 
     public function ajax($function)
     {
-        if(!$this->input->is_ajax_request() || !function_exists($this->$function()))
+        if(!$this->input->is_ajax_request() || !method_exists($this, $function))
         {
             show_404();
             return false;
         }
+
         $this->$function();
         return true;
     }
@@ -79,29 +81,77 @@ abstract class MY_base_controller extends CI_Controller {
         echo "5555";
     }
 
-    public function images_upload()
+    public function images_upload($type = null)
     {
-        // Define a destination
-        $targetFolder = '/assets/uploads'; // Relative to the root
-
-//        $verifyToken = md5('unique_salt' . $_POST['timestamp']);
-
         if (!empty($_FILES)) {
             $tempFile = $_FILES['Filedata']['tmp_name'];
-            $targetPath = $_SERVER['DOCUMENT_ROOT'] . $targetFolder;
+            $targetPath = asset_path().'/uploads/';
+            if(!is_dir($targetPath))
+            {
+                mkdir($targetPath, DIR_WRITE_MODE, TRUE);
+            }
+            if ($handle = opendir($targetPath)) {
+
+                while (false !== ($del_file = readdir($handle))) {
+                    if ($del_file != "." && $del_file != "..") {
+                        unlink($targetPath.$del_file);
+                    }
+                }
+                closedir($handle);
+            }
             $targetFile = rtrim($targetPath,'/') . '/' . $_FILES['Filedata']['name'];
 
             // Validate the file type
             $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
             $fileParts = pathinfo($_FILES['Filedata']['name']);
 
+
             if (in_array($fileParts['extension'],$fileTypes)) {
                 move_uploaded_file($tempFile,$targetFile);
+                if($type && array_key_exists($type, $this->image_sizes))
+                {
+                    $params = $this->image_sizes[$type];
+                    $image_info = getimagesize($targetFile);
+                    if($image_info[0] > $params['width'] || $image_info[1] > $params['height'])
+                    {
+                        if(
+                        (isset($params['align']) && in_array($params['align'], ['width', 'height']))
+                        )
+                        {
+                            if($params['align'] == 'width')
+                            {
+                                $width = $params['width'];
+                                $height = ($width / $image_info[0]) * $image_info[1];
+                            }
+                            else
+                            {
+                                $height = $params['height'];
+                                $width = ($height / $image_info[1]) * $image_info[0];
+                            }
+                        }
+                        else
+                        {
+                            $width = $params['width'];
+                            $height = $params['height'];
+                        }
+                        $fileParts['extension'] = $fileParts['extension'] == 'jpg' ? 'jpeg' : $fileParts['extension'];
+                        $open_function = 'imagecreatefrom'.$fileParts ['extension'];
+                        $write_function = 'image'.$fileParts ['extension'];
+                        $rsr_org = $open_function($targetFile);
+                        $rsr_org = imagescale($rsr_org, $width, $height,  IMG_BICUBIC_FIXED);
+                        $write_function($rsr_org, $targetFile);
+                        imagedestroy($rsr_org);
+                    }
+                }
+
+
                 echo '1';
             } else {
                 echo 'Invalid file type.';
             }
         }
     }
+
+
 
 }

@@ -120,8 +120,13 @@ div#eighth_row{
 
 
 
+/* Admin Module */
 
-
+.admin_container{
+    margin-top: 100px;
+    background: white;
+    border-radius: 10px;
+}
 
 /*Uploading Plugin*/
 .upload_button{
@@ -148,7 +153,7 @@ div#eighth_row{
     margin-top: 10px;
 }
 
-.preview_container .close{
+.preview_container .close, .cover_preview_container .close{
     /*color: black;*/
     border: 1px black solid;
     border-radius: 20px;
@@ -162,4 +167,87 @@ div#eighth_row{
     /*font-size: 150%;*/
     right: 0;
     top: 0;
+}
+
+.cover_preview_container{
+    min-width: 200px;
+    width: auto;
+    height: 250px;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background: none;
+    display: inline-block;
+}
+
+.cover_preview{
+    width: 269px;
+    height: 180px;
+    position: relative;
+    /*background: url("/assets/images/nopicture.jpg"), 50% 50% no-repeat;*/
+    /*background-color: #e1e1e1;*/
+    /*background-size: contain;*/
+    /*background-repeat: no-repeat !important;*/
+
+    border: dashed 1px black;
+    border-radius: 10px;
+    margin-top: 10px;
+
+}
+.cover_preview_container button, #albumCover, .uploadify-button, .swfupload{
+    margin-top: 5px;
+    width: 100% !important;
+    /*height: 20px !important;*/
+    line-height: 20px !important;
+    /*cursor: pointer !important;*/
+}
+.loading{
+    background-image: url("img/loading.gif") !important;
+    background-color: #e1e1e1 !important;
+    background-size: contain !important;
+}
+
+#album_form div.row{
+    margin-bottom: 10px;
+}
+
+.admin_album{
+    width: 100%;
+    height: 228px;
+    background-size: contain !important;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    position: relative;
+    display: block;
+}
+
+/*.admin_album .btn-group{*/
+    /*float: right;*/
+/*}*/
+
+.album_title{
+    width: 100%;
+    padding-top: 20%;
+    font-size: 26px;
+    text-align: center;
+}
+
+.album_description{
+    width: 100%;
+    padding: 10% 10px 5px 10px;
+    font-size: 16px;
+    text-align: justify;
+
+}
+
+.unactive_album{
+    opacity: 0.5;
+}
+
+.black{
+    color: #000000;
+}
+
+.white{
+    color: white;
 }

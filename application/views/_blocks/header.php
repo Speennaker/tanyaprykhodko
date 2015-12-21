@@ -5,10 +5,11 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<meta content="IE=edge" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, initial-scale=1" name="viewport">
- 	<title><?=lang($menu_item.'_page_title')?></title>
+ 	<title><?=$page_title?></title>
 	<?= js('jquery/jquery.js')?>
 	<?= js('../css/bootstrap/dist/js/bootstrap.min.js')?>
 	<?= js('uploadify/jquery.uploadify.min.js')?>
+	<?= js('jquery/jquery.confirm.min.js')?>
     <script type="text/javascript"> var base_url = '<?=base_url()?>';</script>
     <?= js('main.js')?>
 	<?php foreach($custom_js as $r):?>

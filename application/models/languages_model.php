@@ -19,4 +19,18 @@ class Languages_model extends MY_base_model
         }
         return $list;
     }
+
+    public function get_languages($enabled_only = true)
+    {
+        $this->db->from($this->table);
+        $this->db->select('title, code, id');
+        if($enabled_only) $this->db->where('enabled', 1);
+        $r = $this->db->get()->result_array();
+        $result = [];
+        foreach($r as $row)
+        {
+            $result[$row['id']] = $row;
+        }
+        return $result;
+    }
 }
