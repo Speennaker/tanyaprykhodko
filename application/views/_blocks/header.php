@@ -10,6 +10,7 @@
 	<?= js('../css/bootstrap/dist/js/bootstrap.min.js')?>
 	<?= js('uploadify/jquery.uploadify.min.js')?>
 	<?= js('jquery/jquery.confirm.min.js')?>
+    <?= js('blockScroll.js')?>
     <script type="text/javascript"> var base_url = '<?=base_url()?>';</script>
     <?= js('main.js')?>
 	<?php foreach($custom_js as $r):?>

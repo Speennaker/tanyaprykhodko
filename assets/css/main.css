@@ -133,40 +133,37 @@ div#eighth_row{
     padding-bottom: 30% !important;
 }
 
-.preview_container{
-    width: 125px;
+.photo_preview_container{
+    width: 100%;
     position: relative;
     margin-top: 10px;
     background: none;
     display: inline-block;
 }
-.preview{
-    width: 100px;
-    height: 100px;
+.photo_preview{
+    width: 100%;
+    height: 226px;
     position: relative;
 
-    background: url("img/loading.gif"), 50% 50% no-repeat;
-    background-color: #e1e1e1;
-    background-size: contain;
-    border: double 1px black;
-    border-radius: 10px;
+    background: url("img/ajax-loader.gif"), 50% 50% no-repeat;
+    /*background-color: #e1e1e1;*/
+    background-size: 50%;
+    background-position: 50% 0 !important;
+    background-repeat: no-repeat !important;
+    /*border-radius: 10px;*/
     margin-top: 10px;
 }
 
-.preview_container .close, .cover_preview_container .close{
-    /*color: black;*/
-    border: 1px black solid;
+.photo_preview_container .close{
+    color: red;
+    /*border: 1px red solid;*/
     border-radius: 20px;
     position: absolute;
-    /*right: -15px;*/
-    /*top: -15px;*/
-    /*line-height: 100%;*/
-    /*opacity: 0.5;*/
-    /*cursor: pointer;*/
     padding: 0 2px 2px 2px;
-    /*font-size: 150%;*/
-    right: 0;
-    top: 0;
+    font-size: 290%;
+    right: 12px;
+    top: 20px;
+    z-index: 1000;
 }
 
 .cover_preview_container{
@@ -194,12 +191,16 @@ div#eighth_row{
     margin-top: 10px;
 
 }
-.cover_preview_container button, #albumCover, .uploadify-button, .swfupload{
+.cover_preview_container button, #delete_cover, #photos_button, #albumCover, .uploadify-button, .swfupload, #uploadPhotos-button{
     margin-top: 5px;
     width: 100% !important;
     /*height: 20px !important;*/
     line-height: 20px !important;
     /*cursor: pointer !important;*/
+}
+#uploadPhotos-button{
+    height: 20px !important;
+    padding-bottom: 30px !important;
 }
 .loading{
     background-image: url("img/loading.gif") !important;
@@ -213,11 +214,12 @@ div#eighth_row{
 
 .admin_album{
     width: 100%;
-    height: 228px;
+    height: 227px;
     background-size: contain !important;
     border-radius: 15px;
     margin-bottom: 20px;
     position: relative;
+
     display: block;
 }
 
@@ -250,4 +252,26 @@ div#eighth_row{
 
 .white{
     color: white;
+}
+
+#add_album{
+    background: url('https://placeholdit.imgix.net/~text?txtsize=33&txt=%D0%94%D0%BE%D0%B1%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%90%D0%BB%D1%8C%D0%B1%D0%BE%D0%BC&w=340&h=228') 50% 50% no-repeat;
+    border-radius: 15px;
+    /*width: 270px !important;*/
+}
+
+#add_album a{
+    height: 100%;
+    width: inherit;
+    display: block;
+    background: rgba(255,255,255,0.3);
+
+}
+
+#add_album a:hover{
+    background: rgba(255,255,255,0.1);
+}
+
+.uploadify_template{
+    display: none !important;
 }

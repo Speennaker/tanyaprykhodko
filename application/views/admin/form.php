@@ -46,7 +46,7 @@
         </div>
     </div>
     <b style="padding-left: 15px">Обложка</b>
-    <div class="row col-md-12">
+    <div class="row col-md-12" style="margin-bottom: 50px">
         <div class="col-md-4">
 
             <div id="cover_preview_container" class="uploadify-queue-item cover_preview_container">
@@ -58,14 +58,21 @@
                     background-repeat: no-repeat !important;
                 ">
                 </div>
-                <button id="delete_cover" class="btn btn-danger <?=(!$cover && !preg_match("/assets\/images\/albums\/(\d*)\/main.png/", $cover_path, $output_array)) ? 'disabled' : ''?>">Удалить</button>
+                <a href="javascript: void(0);" id="delete_cover" class="btn btn-danger <?=(!$cover && !preg_match("/assets\/images\/albums\/(\d*)\/main.png/", $cover_path, $output_array)) ? 'disabled' : ''?>">Удалить</a>
                 <input type="file" id="albumCover" name="albumCover">
                 <input type="text" id="uploaded_cover" name="uploaded_cover" hidden="hidden" value="<?=$cover?>">
                 <input type="text" id="album_id" hidden="hidden" value="<?=isset($id) ? $id : ''?>">
             </div>
         </div>
     </div>
-    <div class="row col-md-12" style="margin-top: 120px">
+    <?php if(isset($id)):?>
+        <div  class="row col-md-12">
+            <div style="padding-left: 25px" class="col-md-3 form-group">
+                <a href="<?=base_url().$this->module.'/photos/'.$id?>" class="btn btn-lg btn-primary" id="photos_button"><span class="glyphicon glyphicon-camera"></span> ФОТОГРАФИИ (<?=$photos?>) </a>
+            </div>
+        </div>
+    <?php endif;?>
+    <div class="row col-md-12" >
         <div class="form-group">
             <a href="<?=base_url($this->module)?>" class="btn btn-default">Назад</a>
             <button type="submit" class="btn btn-primary">Сохранить</button>

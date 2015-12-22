@@ -76,10 +76,6 @@ abstract class MY_base_controller extends CI_Controller {
         return true;
     }
 
-    protected function delete()
-    {
-        echo "5555";
-    }
 
     public function images_upload($type = null)
     {
@@ -150,6 +146,45 @@ abstract class MY_base_controller extends CI_Controller {
                 echo 'Invalid file type.';
             }
         }
+    }
+
+    public function photos_upload($id)
+    {
+        if (!empty($_FILES)) {
+            $tempFile = $_FILES['Filedata']['tmp_name'];
+            $targetPath = asset_path().'/images/albums/'.$id.'/';
+            if(!is_dir($targetPath))
+            {
+                mkdir($targetPath, DIR_WRITE_MODE, TRUE);
+            }
+
+
+            // Validate the file type
+            $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
+            $fileParts = pathinfo($_FILES['Filedata']['name']);
+            $extension = strtolower($fileParts['extension']);
+            $filename = substr(md5(rand()), 0, 7).'.'.$extension;
+            $targetFile = rtrim($targetPath,'/') . '/' . $filename;
+
+            if (in_array($extension,$fileTypes)) {
+                move_uploaded_file($tempFile,$targetFile);
+
+                echo $filename;
+            } else {
+                echo 'Invalid file type.';
+            }
+        }
+    }
+
+    protected  function clear_directory($path)
+    {
+        if ($objs = glob($path."/*"))
+        {
+            foreach($objs as $obj) {
+                is_dir($obj) ? $this->clear_directory($obj) : unlink($obj);
+            }
+        }
+        rmdir($path);
     }
 
 

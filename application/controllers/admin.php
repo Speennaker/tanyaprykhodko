@@ -15,7 +15,7 @@ class Admin extends MY_base_controller{
         'cover' => [
             'width' => 1269,
             'height' => 180,
-            'ratio' => (4/3),
+            'ratio' => 1.3,
             'align' => 'width'
         ]
     ];
@@ -46,6 +46,18 @@ class Admin extends MY_base_controller{
         $pages = 4;
         $list = $this->albums_model->get_all();
         $this->render_view('index', [['url' => $this->module, 'title' => 'Альбомы']], ['list' => $list, 'page' => $page, 'pages' => $pages] , $this->module);
+    }
+
+    public function photos($id)
+    {
+        $pages = 4;
+        $album = $this->albums_model->get_album($id);
+        $breadcrumbs = [
+            ['url' => $this->module, 'title' => 'Альбомы'],
+            ['url' => $this->module.'/edit/'.$id, 'title' => $album['texts'][1]['title']],
+            ['url' => $this->module.'/photos/'.$id, 'title' => 'Фотографии']
+        ];
+        $this->render_view('photos', $breadcrumbs, ['album' => $album, 'list' => $album['photos_list']] , $this->module);
     }
 
 
@@ -122,11 +134,12 @@ class Admin extends MY_base_controller{
         {
             $data = $this->albums_model->get_album($id);
         }
+        $data_form = array_merge($data_form, $data);
         $breadcrumbs = [
             ['url' => $this->module, 'title' => 'Альбомы'],
-            ['url' => $this->module.'/edit/'.$id, 'title' => '#'.$id]
+            ['url' => $this->module.'/edit/'.$id, 'title' => $data_form['texts'][1]['title']]
         ];
-        $data_form = array_merge($data_form, $data);
+
 
         $this->render_view('form', $breadcrumbs, $data_form, $this->module);
     }
@@ -186,16 +199,48 @@ class Admin extends MY_base_controller{
         return ['data' => $data, 'errors' => $errors];
     }
 
-    public function delete_cover()
+    protected function delete_cover()
     {
         $id = $this->input->post('id');
-        if(!$id) echo 'FALSE';
+        if(!$id) die('FALSE');
         $path = asset_path().'/images/albums/'.$id.'/main.png';
         if(file_exists($path)) unlink($path);
 
         echo 'TRUE';
 
     }
+
+    protected function delete_album()
+    {
+        $id = $this->input->post('id');
+        if(!$id) die('FALSE');
+        $this->albums_model->delete($id);
+        $path = asset_path().'/images/albums/'.$id;
+        if(is_dir($path)) $this->clear_directory($path);
+
+        echo 'TRUE';
+    }
+
+    protected function update_album_status()
+    {
+        $id = $this->input->post('id');
+        $status = $this->input->post('status');
+        if(!$id || $status === false ) die('FALSE');
+        $this->albums_model->update($id, ['active' => $status]);
+        echo 'TRUE';
+    }
+
+    protected function delete_photo()
+    {
+        $album_id = $this->input->post('album_id');
+        $filename = $this->input->post('filename');
+        if(!$album_id || !$filename) die('FALSE');
+        $path = asset_path().'/images/albums/'.$album_id.'/'.$filename;
+        if(file_exists($path)) unlink($path);
+        echo('TRUE');
+    }
+
+
 
 
 }

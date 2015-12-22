@@ -35,6 +35,8 @@ class Albums_model extends MY_base_model
         $result = $this->get_by_id($id);
         if(!$result) return $result;
         $result['texts'] = $this->albums_texts_model->get_albums_texts($id);
+        $result['photos_list'] = $this->get_albums_images($id);
+        $result['photos'] = count($result['photos_list']);
         return $result;
     }
 
@@ -57,9 +59,29 @@ class Albums_model extends MY_base_model
             $id = $result['id'];
             $result['texts'] = $this->albums_texts_model->get_albums_texts($id);
             $path = asset_path()."/images/albums/$id/main.png";
-            $result['cover'] = file_exists($path) ? base_url("assets/albums/$id/main.png") : base_url($this->default_cover);
+            $result['cover'] = file_exists($path) ? base_url("assets/images/albums/$id/main.png") : base_url($this->default_cover);
+            $result['photos'] = count($this->get_albums_images($id));
+
         }
 
         return $results;
+    }
+
+    private function get_albums_images($id)
+    {
+        $path = asset_path().'/images/albums/'.$id;
+        if(!is_dir($path)) return [];
+        $result = [];
+        if ($objs = glob($path."/*"))
+        {
+            foreach($objs as $obj) {
+                if(is_dir($obj)) continue;
+                $filename = str_replace($path.'/', '', $obj);
+                if($filename == 'main.png') continue;
+                $result[$filename] = base_url('assets/images/albums/'.$id.'/'.$filename);
+            }
+        }
+        return $result;
+
     }
 }

@@ -5,7 +5,7 @@ $(document).ready(function () {
         return false;
     });
 
-    $('[data-toggle="tooltip"]').tooltip({container: 'body'});
+    $('[data-toggle="tooltip"]').tooltip({container: 'body', animation: false});
     $(document).on('change', '.table_checkbox', function(){
         var others = $('.table_checkbox:checked').length;
         dropdownToggle (others);
@@ -16,6 +16,10 @@ $(document).ready(function () {
         var state = $(this).prop('checked');
         table_checkboxes.prop('checked', state);
         dropdownToggle(state);
+    });
+
+    $(document).on('click', '.delete_photo', function(){
+        deletePhoto($(this));
     });
 
     $(document).on('click', '#bulk_actions_list a, #deleteConfirmed', function(){
@@ -34,35 +38,55 @@ $(document).ready(function () {
         generateBreadcrumb(this)
     });
 
-    $('#exampleInputFile').uploadify({
-        'swf'      : base_url + 'assets/js/uploadify/uploadify.swf',
-        'uploader' : base_url + 'categories/images_upload',
-        'buttonClass' : 'btn btn-primary upload_button',
-        'height' : 30,
-        'buttonText' : 'BROWSE...',
-        'progressData' : 'percentage',
-        //'onUploadProgress' : function(file, bytesUploaded, bytesTotal, totalBytesUploaded, totalBytesTotal) {
-        //    $('#progress').html(totalBytesUploaded + 'bytes.');
-        //},
-        'itemTemplate' : '\
-                    <div id="${fileID}" class="uploadify-queue-item preview_container">\
-                        <a type="button" href="javascript:$(\'#${instanceID}\').uploadify(\'cancel\', \'${fileID}\')" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></a>\
-                        <div class="preview">\
-                        </div>\
-                        <span class="fileName">${fileName} <br>(${fileSize})</span><br><span class="data">Loading...</span>\
-                        <div class="uploadify-progress"><div class="uploadify-progress-bar"><!--Progress Bar--></div></div>\
-                    </div>\
-                ',
-        'removeCompleted' : false,
-        'onUploadComplete' : function(file) {
-            var path = base_url + 'assets/uploads/' + file.name;
-            $('#' + file.id + ' div.preview').css('background', 'url("' + path +'") 50% 50% no-repeat').css('background-size', 'contain');
-        }
+    if(typeof albumId !=="undefined")
+    {
+        $('#uploadPhotos').uploadify({
+            'swf'      : base_url + 'assets/js/uploadify/uploadify.swf',
+            'uploader' : base_url + 'admin/photos_upload/'+albumId,
+            'buttonClass' : 'btn btn-primary btn-lg upload_button',
+            'height' : 30,
+            'buttonText' : 'Загрузить',
+            'progressData' : 'percentage',
+            'onUploadStart' : function(file) {
+                var block  = '\
+             <div class="col-xs-3">\
+                <div id="file-'+ file.id+'" class="uploadify-queue-item photo_preview_container">\
+                    <a type="button" href="javascript:void(0);" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></a>\
+                    <div class="photo_preview">\
+                </div>\
+                <div class="progress">\
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">\
+            0%\
+            </div>\
+            </div>\
+                </div>\
+            </div>\
+                ';
+                $('#no_photos').hide();
+                $('#photos_container').append(block);
+
+            },
+
+            'onUploadProgress' : function(file, bytesUploaded, bytesTotal, totalBytesUploaded, totalBytesTotal) {
+                var percents = parseInt(bytesUploaded/(bytesTotal / 100));
+                console.log(percents);
+                $('#file-'+ file.id+' .progress-bar').html(percents +'%').css('width', percents +'%');
+            },
+            'itemTemplate' : '<div id="${fileID}" class="uploadify_template">Загружаю...</div>',
+            'removeCompleted' : true,
+            'onUploadSuccess' : function(file, data, response) {
+                var path = base_url + 'assets/images/albums/'+albumId+ '/' + data;
+                $('#file-' + file.id + ' div.photo_preview').css('background', 'url("' + path +'") 50% 0 no-repeat').css('background-size', 'contain');
+                $('#file-'+ file.id+' .progress').remove();
+
+            }
 
 
 
-        // Put your options here
-    });
+            // Put your options here
+        });
+    }
+
     $('#albumCover').uploadify({
         'swf'      : base_url + 'assets/js/uploadify/uploadify.swf',
         'uploader' : base_url + 'admin/images_upload/cover',
@@ -87,13 +111,13 @@ $(document).ready(function () {
         // Put your options here
     });
 
-    //$(document).on('click', '#delete_cover', function(event){
-    //
-    //    event.preventDefault();
-    //
-    //
-    //    deleteCover(id, $(this));
-    //});
+    $(document).on('click', '.album_status', function(event){
+
+        event.preventDefault();
+
+        updateAlbumStatus($(this));
+    });
+
     $("#delete_cover").confirm({
         text: "Вы уверены что хотите удалить обложку?",
         title: "Требуется подтверждение",
@@ -112,19 +136,43 @@ $(document).ready(function () {
         dialogClass: "modal-dialog modal-lg" // Bootstrap classes for large modal
     });
 
+    $(".delete_album").confirm({
+        text: "Вы уверены что хотите удалить альбом вместе со всеми фотографиями?",
+        title: "Требуется подтверждение",
+        confirm: function(button) {
+            var id = button.data('id');
 
-var blockScroller =  $(".b_sections-container").blockScroll({
-      scrollDuration:400,
-      fadeBlocks: false,
-      fadeDuration: 200
- }); 
+            var block = button.parents('.col-xs-4');
+            deleteAlbum(id, block);
+        },
+        cancel: function(button) {
+            // nothing to do
+        },
+        confirmButton: "Да",
+        cancelButton: "Нет",
+        post: true,
+        confirmButtonClass: "btn-danger",
+        cancelButtonClass: "btn-default",
+        dialogClass: "modal-dialog modal-lg" // Bootstrap classes for large modal
+    });
 
 
-$('.b_page-nav_list a').bind('click', function(e){
-  e.preventDefault();
-  var n = $(this).data('href');
-  blockScroller.goto([n]); 
-});
+    if($(".b_sections-container").length)
+    {
+        var blockScroller =  $(".b_sections-container").blockScroll({
+            scrollDuration:400,
+            fadeBlocks: false,
+            fadeDuration: 200
+        });
+
+
+        $('.b_page-nav_list a').bind('click', function(e){
+            e.preventDefault();
+            var n = $(this).data('href');
+            blockScroller.goto([n]);
+        });
+    }
+
 
 });
 
@@ -188,4 +236,103 @@ function deleteCover(id, button)
     button.addClass('disabled');
     button.attr('disabled', 'disabled');
 
+}
+
+function deleteAlbum(id, block)
+{
+    if(id)
+    {
+        $.ajax({
+            type: 'POST',
+            url: base_url + 'admin/ajax_delete_album',
+            data: {id: id},
+
+            beforeSend: function(){
+                block.find('.admin_album').addClass('loading');
+            },
+            success: function(response){
+                if (response != "FALSE")
+                {
+                    block.remove();
+                }
+                else if(response == "FALSE")
+                {
+                    block.removeClass('loading');
+                }
+            }
+        });
+    }
+}
+
+function updateAlbumStatus(button)
+{
+    var id = button.data('id');
+    if(id)
+    {
+        var block = button.parents('.col-xs-4');
+        var cover =  block.find('.admin_album');
+        var status = 1;
+        if(button.hasClass('glyphicon-check'))
+        {
+            status = 0;
+        }
+        $.ajax({
+            type: 'POST',
+            url: base_url + 'admin/ajax_update_album_status',
+            data: {id: id, status:status},
+
+            beforeSend: function(){
+               cover.addClass('loading');
+            },
+            success: function(response){
+                cover.removeClass('loading');
+                if (response != "FALSE")
+                {
+                  if(status == 1)
+                  {
+                      button.removeClass('glyphicon-unchecked');
+                      button.addClass('glyphicon-check');
+                      cover.removeClass('unactive_album');
+                  }
+                    else
+                  {
+                      button.removeClass('glyphicon-check');
+                      button.addClass('glyphicon-unchecked');
+                      cover.addClass('unactive_album');
+                  }
+
+                }
+                else if(response == "FALSE")
+                {
+
+                }
+            }
+        });
+    }
+}
+
+
+function deletePhoto(button)
+{
+    var filename = button.data('filename');
+    var block = button.parents('.col-xs-3');
+    $.ajax({
+        type: 'POST',
+        url: base_url + 'admin/ajax_delete_photo',
+        data: {album_id: albumId, filename: filename},
+
+        beforeSend: function(){
+            block.css('opacity', '0.3');
+        },
+        success: function(response){
+            if (response != "FALSE")
+            {
+                block.remove();
+            }
+            else if(response == "FALSE")
+            {
+                block.css('opacity', '1.0');
+            }
+        }
+    });
 }
