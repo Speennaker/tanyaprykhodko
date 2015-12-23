@@ -44,6 +44,7 @@ class Admin extends MY_base_controller{
     public function index($page = 1)
     {
         $pages = 4;
+        if(!$this->session->userdata('logged_in')) redirect(base_url('login'));
         $list = $this->albums_model->get_all();
         $this->render_view('index', [['url' => $this->module, 'title' => 'Альбомы']], ['list' => $list, 'page' => $page, 'pages' => $pages] , $this->module);
     }
@@ -51,6 +52,7 @@ class Admin extends MY_base_controller{
     public function photos($id)
     {
         $pages = 4;
+        if(!$this->session->userdata('logged_in')) redirect(base_url('login'));
         $album = $this->albums_model->get_album($id);
         $breadcrumbs = [
             ['url' => $this->module, 'title' => 'Альбомы'],
@@ -63,6 +65,7 @@ class Admin extends MY_base_controller{
 
     public function create()
     {
+        if(!$this->session->userdata('logged_in')) redirect(base_url('login'));
         $data_form = ['action' => 'create', 'cover' => '', 'cover_path' => base_url($this->default_cover)];
         if($this->input->post())
         {
@@ -100,6 +103,7 @@ class Admin extends MY_base_controller{
 
     public function edit($id)
     {
+        if(!$this->session->userdata('logged_in')) redirect(base_url('login'));
         $data_form = [
             'action' => 'edit/'.$id,
             'cover_path' => file_exists($this->albums_path.$id.'/main.png') ? base_url('assets/images/albums/'.$id.'/main.png') : base_url($this->default_cover),

@@ -42,7 +42,7 @@ $(document).ready(function () {
     {
         $('#uploadPhotos').uploadify({
             'swf'      : base_url + 'assets/js/uploadify/uploadify.swf',
-            'uploader' : base_url + 'admin/photos_upload/'+albumId,
+            'uploader' : base_url + 'index/photos_upload/'+albumId,
             'buttonClass' : 'btn btn-primary btn-lg upload_button',
             'height' : 30,
             'buttonText' : 'Загрузить',
@@ -51,7 +51,7 @@ $(document).ready(function () {
                 var block  = '\
              <div class="col-xs-3">\
                 <div id="file-'+ file.id+'" class="uploadify-queue-item photo_preview_container">\
-                    <a type="button" href="javascript:void(0);" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></a>\
+                    <a type="button" href="javascript:void(0);" class="close delete_photo" aria-label="Close"><span aria-hidden="true">&times;</span></a>\
                     <div class="photo_preview">\
                 </div>\
                 <div class="progress">\
@@ -69,7 +69,6 @@ $(document).ready(function () {
 
             'onUploadProgress' : function(file, bytesUploaded, bytesTotal, totalBytesUploaded, totalBytesTotal) {
                 var percents = parseInt(bytesUploaded/(bytesTotal / 100));
-                console.log(percents);
                 $('#file-'+ file.id+' .progress-bar').html(percents +'%').css('width', percents +'%');
             },
             'itemTemplate' : '<div id="${fileID}" class="uploadify_template">Загружаю...</div>',
@@ -77,6 +76,7 @@ $(document).ready(function () {
             'onUploadSuccess' : function(file, data, response) {
                 var path = base_url + 'assets/images/albums/'+albumId+ '/' + data;
                 $('#file-' + file.id + ' div.photo_preview').css('background', 'url("' + path +'") 50% 0 no-repeat').css('background-size', 'contain');
+                $('#file-' + file.id + ' a.delete_photo').attr('data-filename', data);
                 $('#file-'+ file.id+' .progress').remove();
 
             }
@@ -89,7 +89,7 @@ $(document).ready(function () {
 
     $('#albumCover').uploadify({
         'swf'      : base_url + 'assets/js/uploadify/uploadify.swf',
-        'uploader' : base_url + 'admin/images_upload/cover',
+        'uploader' : base_url + 'index/images_upload/cover',
         'buttonClass' : 'btn btn-primary',
         'height' : 30,
         'buttonText' : 'Загрузить',
@@ -328,6 +328,10 @@ function deletePhoto(button)
             if (response != "FALSE")
             {
                 block.remove();
+                if(!$('.photo_preview_container').length)
+                {
+                    $('#no_photos').show();
+                }
             }
             else if(response == "FALSE")
             {

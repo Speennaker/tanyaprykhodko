@@ -10,10 +10,11 @@ abstract class MY_base_controller extends CI_Controller {
     /** @var  languages_model */
     public $languages_model;
     public $messages = [];
+    /** @var CI_Session*/
     public $session;
     public $image_sizes = [];
 
-    function __construct($menu_item)
+    function __construct($menu_item = null)
     {
         parent::__construct();
         $this->menu_item = $menu_item;

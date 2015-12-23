@@ -9,7 +9,7 @@
         <div id="navbar" class="collapse navbar-collapse">
             <form class="navbar-form navbar-right">
                 <div class="form-group">
-                    <button class="btn btn-danger" type="submit">Выйти</button>
+                    <a class="btn btn-danger" href="<?= base_url('login/logout')?>" >Выйти</a>
                 </div>
             </form>
         </div>
