@@ -45,6 +45,8 @@ $(document).ready(function () {
             'uploader' : base_url + 'index/photos_upload/'+albumId,
             'buttonClass' : 'btn btn-primary btn-lg upload_button',
             'height' : 30,
+            'fileTypeDesc' : 'Image Files',
+            'fileTypeExts' : '*.gif; *.jpg; *.png; *.jpeg; *.bmp',
             'buttonText' : 'Загрузить',
             'progressData' : 'percentage',
             'onUploadStart' : function(file) {
@@ -74,6 +76,10 @@ $(document).ready(function () {
             'itemTemplate' : '<div id="${fileID}" class="uploadify_template">Загружаю...</div>',
             'removeCompleted' : true,
             'onUploadSuccess' : function(file, data, response) {
+                if(data == 'FALSE')
+                {
+                    $('#file-' + file.id + ' div.photo_preview').parents('.col-xs-3').remove();
+                }
                 var path = base_url + 'assets/images/albums/'+albumId+ '/' + data;
                 $('#file-' + file.id + ' div.photo_preview').css('background', 'url("' + path +'") 50% 0 no-repeat').css('background-size', 'contain');
                 $('#file-' + file.id + ' a.delete_photo').attr('data-filename', data);
@@ -92,6 +98,8 @@ $(document).ready(function () {
         'uploader' : base_url + 'index/images_upload/cover',
         'buttonClass' : 'btn btn-primary',
         'height' : 30,
+        'fileTypeDesc' : 'Image Files',
+        'fileTypeExts' : '*.gif; *.jpg; *.png; *.jpeg; *.bmp',
         'buttonText' : 'Загрузить',
         'progressData' : 'percentage',
         'multi' : false,

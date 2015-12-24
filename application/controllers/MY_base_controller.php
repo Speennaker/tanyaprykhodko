@@ -161,7 +161,7 @@ abstract class MY_base_controller extends CI_Controller {
 
 
             // Validate the file type
-            $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
+            $fileTypes = array('jpg','jpeg','gif','png' ,'bmp'); // File extensions
             $fileParts = pathinfo($_FILES['Filedata']['name']);
             $extension = strtolower($fileParts['extension']);
             $filename = substr(md5(rand()), 0, 7).'.'.$extension;
@@ -172,7 +172,7 @@ abstract class MY_base_controller extends CI_Controller {
 
                 echo $filename;
             } else {
-                echo 'Invalid file type.';
+                echo 'FALSE';
             }
         }
     }
