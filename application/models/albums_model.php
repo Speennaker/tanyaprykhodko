@@ -20,10 +20,10 @@ class Albums_model extends MY_base_model
         $cover  = isset($data['cover']) ? $data['cover'] : null;
         unset($data['cover']);
         unset($data['texts']);
+        unset($data['errors']);
         if($id) $this->update($id, $data);
         else $id = $this->add($data);
         $this->albums_texts_model->save_albums_texts($texts, $id);
-//        var_dump($cover);die;
         if($cover){
             $this->save_cover($cover, $id);
         }

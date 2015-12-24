@@ -275,3 +275,27 @@ div#eighth_row{
 .uploadify_template{
     display: none !important;
 }
+
+strong{
+    font-weight: bold !important;
+}
+
+.btn-white{
+    background-color: rgba(0,0,0, 0.7) !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+}
+
+.btn-white:hover, .btn-white.active{
+    background-color: rgba(0,0,0,1) !important;
+}
+
+.btn-black{
+    background-color: rgb(232, 232, 232) !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+}
+
+.btn-black:hover, .btn-black.active {
+    background-color: rgba(255,255,255,1) !important;
+}

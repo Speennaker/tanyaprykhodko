@@ -7,7 +7,7 @@
             <div class="col-md-1 form-group">
                 <label><?=$language['title']?></label>
             </div>
-            <div class="col-md-4 form-group">
+            <div class="col-md-4 form-group <?= array_key_exists($language['id'], $errors) ? 'has-error' : ''?>">
                 <label for="titles-<?=$language['id']?>" class="sr-only">Заголовок</label>
                 <input type="text" class="form-control" id="titles-<?=$language['id']?>" name="texts[<?=$language['id']?>][title]" value="<?= isset($texts[$language['id']]) ? $texts[$language['id']]['title'] : ''?>" placeholder="Заголовок">
             </div>
@@ -21,7 +21,7 @@
         <div class="col-md-1 form-group">
             <label for="breadcrumb">URL</label>
         </div>
-        <div class="col-md-8 input-group">
+        <div class="col-md-8 input-group form-group <?= array_key_exists('url', $errors) ? 'has-error' : ''?>">
             <span class="input-group-addon" id="sizing-addon1"><?=base_url('portfolio').'/'?></span>
             <input type="text" class="form-control" id="breadcrumb" name="breadcrumb" value="<?= isset($breadcrumb) ? $breadcrumb : ''?>" placeholder="URL">
         </div>
@@ -30,10 +30,10 @@
         <div class="col-md-2 form-group"><label for="option1">Цвет текста</label> </div>
         <div class="col-md-8 form-group">
             <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary <?= (!isset($font_color) || $font_color == 'black') ? 'active' : ''?>">
+                <label class="btn btn-primary btn-black <?= (!isset($font_color) || $font_color == 'black') ? 'active' : ''?>">
                     <input type="radio" name="font_color" id="option2" value="black" autocomplete="off" <?= (!isset($font_color) || $font_color == 'black') ? 'checked="checked"' : ''?> > Черный
                 </label>
-                <label class="btn btn-primary <?= (isset($font_color) && $font_color == 'white') ? 'active' : ''?>">
+                <label class="btn btn-primary btn-white <?= (isset($font_color) && $font_color == 'white') ? 'active' : ''?>">
                     <input type="radio" name="font_color" id="option1" autocomplete="off" value="white" <?= (isset($font_color) && $font_color == 'white') ? 'checked="checked"' : ''?>> Белый
                 </label>
             </div>

@@ -66,12 +66,12 @@ class Admin extends MY_base_controller{
     public function create()
     {
         if(!$this->session->userdata('logged_in')) redirect(base_url('login'));
-        $data_form = ['action' => 'create', 'cover' => '', 'cover_path' => base_url($this->default_cover)];
+        $data_form = ['action' => 'create', 'cover' => '', 'cover_path' => base_url($this->default_cover), 'errors' => []];
         if($this->input->post())
         {
             $prepared = $this->prepare_data();
             $data = $prepared['data'];
-            $errors = $prepared['errors'];
+            $data['errors'] = $errors = $prepared['errors'];
             if(!$errors)
             {
                 $id = $this->albums_model->save_album($data);
@@ -80,17 +80,13 @@ class Admin extends MY_base_controller{
             }
             else
             {
-                $error = '';
-                foreach($errors as $err){
-
-                    $error .= '<br>'.$err;
-                }
+                $error = '<br><br>'.implode('<br><br>', $errors);
                 $this->session->set_flashdata('danger', ['title' => 'Ошибка!', 'text' => $error]);
-                if($data['cover']) $data['cover'] = base_url($this->upload_path.$data['cover']);
+                if($data['cover']) $data['cover_path'] = base_url($this->upload_path.$data['cover']);
                 $data_form = array_merge($data_form, $data);
             }
         }
-
+//        var_dump($data_form);die;
 
         $breadcrumbs = [
             ['url' => $this->module, 'title' => 'Альбомы'],
@@ -107,13 +103,14 @@ class Admin extends MY_base_controller{
         $data_form = [
             'action' => 'edit/'.$id,
             'cover_path' => file_exists($this->albums_path.$id.'/main.png') ? base_url('assets/images/albums/'.$id.'/main.png') : base_url($this->default_cover),
-            'cover' => ''
+            'cover' => '',
+            'errors' => []
         ];
         if($this->input->post())
         {
             $prepared = $this->prepare_data();
             $data = $prepared['data'];
-            $errors = $prepared['errors'];
+            $data['errors'] = $errors = $prepared['errors'];
             $data['id'] = $id;
             if(!$errors)
             {
@@ -124,11 +121,7 @@ class Admin extends MY_base_controller{
 
             else
             {
-                $error = '';
-                foreach($errors as $err){
-
-                    $error .= '<br>'.$err;
-                }
+                $error = '<br><br>'.implode('<br><br>', $errors);
                 $this->session->set_flashdata('danger', ['title' => 'Ошибка!', 'text' => $error]);
                 if($data['cover']) $data['cover_path'] = base_url($this->upload_path.$data['cover']);
 
@@ -188,17 +181,18 @@ class Admin extends MY_base_controller{
         {
             if(!$text['title'])
             {
-                $errors[] = 'Введите заголовок для языка '.$this->languages[$langugage_id]['title'].'!';
+                $errors[$langugage_id] = 'Введите заголовок для языка '.$this->languages[$langugage_id]['title'].'!';
             }
             $text['languages_id'] = $langugage_id;
 
         }
 
-        if(!$data['breadcrumb']) $errors[] = 'Введите URL!';
+        if(!$data['breadcrumb']) $errors['url'] = 'Введите URL!';
         $data['cover'] = '';
+
         if($this->input->post('uploaded_cover') && file_exists( asset_path().'/uploads/'.$this->input->post('uploaded_cover')))
         {
-                $data['cover'] = $this->input->post('uploaded_cover');
+            $data['cover'] = $this->input->post('uploaded_cover');
         }
         return ['data' => $data, 'errors' => $errors];
     }
