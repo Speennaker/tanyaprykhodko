@@ -1,5 +1,6 @@
 <div class="container" style="padding-top: 200px">
     <div class="row col-md-12">
+        <h2 style="font-size: 36px; width: 100%; text-align: center; padding-bottom: 20px" class="text-danger"><span class="glyphicon glyphicon-warning-sign"></span> Authorization needed</h2>
         <?php foreach($this->session->flashdata() as $class => $message):?>
             <div class="alert alert-<?=$class?> alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
