@@ -10,14 +10,17 @@
 	<?= js('../css/bootstrap/dist/js/bootstrap.min.js')?>
 	<?= js('uploadify/jquery.uploadify.min.js')?>
 	<?= js('jquery/jquery.confirm.min.js')?>
+	<?= js('jquery/jquery.validate.min.js')?>
+	<?= $this->current_language_short != 'en' ? ('jquery/localization/messages_'.$this->current_language_short.'.js') : ''?>
     <?= js('blockScroll.js')?>
-    <script type="text/javascript"> var base_url = '<?=base_url()?>';</script>
+    <script type="text/javascript"> var base_url = '<?=base_url()?>'; var language = '<?=$this->current_language_short?>'</script>
     <?= js('main.js')?>
 	<?php foreach($custom_js as $r):?>
 		<?= js($r)?>
 	<?php endforeach;?>
 	<?= css('../css/bootstrap/dist/css/bootstrap.min.css')?>
 	<?= css('../js/uploadify/uploadify.css')?>
+	<?= css('../js/jquery_validate/demo/css/cmxform.css')?>
 	<?= css('blockScroll.css')?>
 	<?= css('main.css')?>
 	<?= css('common.css')?>

@@ -13,36 +13,56 @@ abstract class MY_base_controller extends CI_Controller {
     /** @var CI_Session*/
     public $session;
     public $image_sizes = [];
+    public $long_to_short = [
+        'russian'=> 'ru',
+        'english'=> 'en'
+    ];
+    public $current_language = 'english';
+    public $current_language_short = 'en';
+
 
     function __construct($menu_item = null)
     {
         parent::__construct();
         $this->menu_item = $menu_item;
         $this->load->model('languages_model');
-        if(!$this->session->userdata('language'))
+        $get_lang = $this->input->get('l');
+
+        if($get_lang && array_key_exists($get_lang, $this->long_to_short))
         {
-            $this->session->set_userdata('language', $this->getLanguage());
+            $this->current_language = $get_lang;
+            $this->session->set_userdata('language', $get_lang);
         }
-        $this->lang->load("main",$this->session->userdata('language'));
-
-
-
+        else
+        {
+            if(!$this->session->userdata('language'))
+            {
+                $this->session->set_userdata('language', $this->getLanguage());
+            }
+            else
+            {
+                $this->current_language = $this->session->userdata('language');
+            }
+        }
+        $this->lang->load("main",$this->current_language);
+        $this->current_language_short = $this->long_to_short[$this->current_language];
     }
 
     private function getLanguage($default = 'english')
     {
         if (($list = strtolower($_SERVER['HTTP_ACCEPT_LANGUAGE']))) {
             if (preg_match_all('/([a-z]{1,8}(?:-[a-z]{1,8})?)(?:;q=([0-9.]+))?/', $list, $list)) {
-                $this->language = array_combine($list[1], $list[2]);
-                foreach ($this->language as $n => $v)
-                    $this->language[$n] = $v ? $v : 1;
-                arsort($this->language, SORT_NUMERIC);
+                $language = array_combine($list[1], $list[2]);
+                foreach ($language as $n => $v)
+                    $language[$n] = $v ? $v : 1;
+                arsort($language, SORT_NUMERIC);
             }
-        } else $this->language = array();
+            else $language = array();
+        } else $language = array();
         $langs = [
             'russian'=> ['ru','be','uk','ky','ab','mo','et','lv'],
-            'arabian'=> 'ar',
-            'english'=> ['en', 'fr', 'de', 'es', 'pt']
+//            'arabian'=> 'ar',
+            'english'=> ['en', 'fr', 'de', 'es', 'pt', 'ar']
         ];
 
 
@@ -55,9 +75,10 @@ abstract class MY_base_controller extends CI_Controller {
             }else $languages[strtolower($alias)]=strtolower($lang);
         }
 
-        foreach ($this->language as $l => $v) {
+        foreach ($language as $l => $v) {
             $s = strtok($l, '-'); // убираем то что идет после тире в языках вида "en-us, ru-ru"
             if (isset($languages[$s]))
+                $this->current_language = $languages[$s];
                 return $languages[$s];
         }
         return $default;
@@ -139,7 +160,7 @@ abstract class MY_base_controller extends CI_Controller {
             $targetFile = rtrim($targetPath,'/') . '/' . $_FILES['Filedata']['name'];
 
             // Validate the file type
-            $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
+            $fileTypes = array('jpg','jpeg','gif','png', 'bmp'); // File extensions
             $fileParts = pathinfo($_FILES['Filedata']['name']);
 
 

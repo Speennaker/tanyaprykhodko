@@ -51,7 +51,6 @@ class Admin extends MY_base_controller{
 
     public function photos($id)
     {
-        $pages = 4;
         if(!$this->session->userdata('logged_in')) redirect(base_url('login'));
         $album = $this->albums_model->get_album($id);
         $breadcrumbs = [
