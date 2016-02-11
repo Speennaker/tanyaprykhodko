@@ -12,7 +12,9 @@
 	<?= js('jquery/jquery.confirm.min.js')?>
   <?= js('blockScroll.js')?>
   <?= js('jquery.custom-scrollbar.min.js')?>
-  <script type="text/javascript"> var base_url = '<?=base_url()?>'; isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);</script>
+	<?= js('jquery/jquery.validate.min.js')?>
+  <?= $this->current_language_short != 'en' ? ('jquery/localization/messages_'.$this->current_language_short.'.js') : ''?>
+  <script type="text/javascript"> var base_url = '<?=base_url()?>'; var language = '<?=$this->current_language_short?>'; isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);</script>
   <?= js('main.js')?>
 	<?php foreach($custom_js as $r):?>
 	<?= js($r)?>

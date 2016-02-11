@@ -5,7 +5,8 @@
 */
 
 $lang = [
-    'albums' => 'Albums'
+    'albums' => 'Albums',
+    'required_empty' => 'Please fill all required fields!',
 
 
 

@@ -31,11 +31,11 @@ class Admin extends MY_base_controller{
         $this->bulk_actions = [
             'separated' =>
                 [
-                    [
-                        'url' => 'categories/ajax_delete',
-                        'title' => lang('delete'),
-                        'class' => 'danger'
-                    ]
+//                    [
+//                        'url' => 'categories/ajax_delete',
+//                        'title' => lang('delete'),
+//                        'class' => 'danger'
+//                    ]
                 ],
         ];
 
@@ -51,7 +51,6 @@ class Admin extends MY_base_controller{
 
     public function photos($id)
     {
-        $pages = 4;
         if(!$this->session->userdata('logged_in')) redirect(base_url('login'));
         $album = $this->albums_model->get_album($id);
         $breadcrumbs = [
@@ -152,7 +151,7 @@ class Admin extends MY_base_controller{
         ], $return);
 
         $page['additional_header'] = $this->load->view('_blocks/admin_head', [
-            'page_title' => lang('main_title'), // Заголовок страницы
+            'page_title' => 'Main Title', // Заголовок страницы
             'custom_js' => $js, // Кастомные JS
             'custom_css' => $css, // Кастомные стили
             'menus' => $this->get_menus(), // Элементы бокового меню
