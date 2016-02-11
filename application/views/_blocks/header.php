@@ -20,7 +20,6 @@
 	<?php endforeach;?>
 	<?= css('../css/bootstrap/dist/css/bootstrap.min.css')?>
 	<?= css('../js/uploadify/uploadify.css')?>
-	<?= css('../js/jquery_validate/demo/css/cmxform.css')?>
 	<?= css('blockScroll.css')?>
 	<?= css('main.css')?>
 	<?= css('common.css')?>

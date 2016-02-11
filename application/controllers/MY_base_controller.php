@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 abstract class MY_base_controller extends CI_Controller {
 
+   /** @var  CI_Input */
+    public $input;
     /** @var  CI_Loader */
     public $load;
     protected $menu_item;
@@ -27,7 +29,6 @@ abstract class MY_base_controller extends CI_Controller {
         $this->menu_item = $menu_item;
         $this->load->model('languages_model');
         $get_lang = $this->input->get('l');
-
         if($get_lang && array_key_exists($get_lang, $this->long_to_short))
         {
             $this->current_language = $get_lang;
@@ -108,20 +109,20 @@ abstract class MY_base_controller extends CI_Controller {
     protected function get_menus()
     {
         $menus = [
-            [
-                'admin' => [
-                    'url' => '',
-                    'title' => lang('dashboard_title')
-                ],
-                'categories' => [
-                    'url' => 'categories',
-                    'title' => lang('categories_title')
-                ],
-                'rules' => [
-                    'url' => 'rules',
-                    'title' => lang('rules_title')
-                ],
-            ]
+//            [
+//                'admin' => [
+//                    'url' => '',
+//                    'title' => lang('dashboard_title')
+//                ],
+//                'categories' => [
+//                    'url' => 'categories',
+//                    'title' => lang('categories_title')
+//                ],
+//                'rules' => [
+//                    'url' => 'rules',
+//                    'title' => lang('rules_title')
+//                ],
+//            ]
         ];
         return $menus;
     }
