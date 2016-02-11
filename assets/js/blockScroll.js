@@ -13,7 +13,7 @@
 
     if(settings.triggerRatio > settings.paddingRatio*.95) { settings.triggerRatio = settings.paddingRatio*.95 }
 
-    var theDivs = this.children().filter("div");
+    var theDivs = this.children().filter(".b_section-wrap");
     var activeDiv = settings.startDiv-1; //Active did is 0-index, settings is 1-index
     var windowHeight; 
     var paddingHeight;
@@ -110,9 +110,22 @@
         gotoDiv(activeDiv+1);
       }
     }
+    function testAnim(item) {
+      var it = $(item).find('.toAnimate');
+      it.css('opacity',0);
+      $.each(it, function(index, val) {
+        setTimeout(function(){
+          $(val).css('opacity',1);
+          $(val).removeClass().addClass($(val).data('animtype') + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+            $(this).removeClass();
+          });
+        }, $(val).data('animdyration'));
+      });
+
+    };
     
     function gotoDiv(number)
-    {
+    {      
       if(number == 0)
         $("#block-up-arrow").hide();
       else
@@ -130,7 +143,17 @@
           },50);
         });
       });
+      $('.b_page-nav_list ul').eq(0).find('a').removeClass();
+      $('.b_page-nav_list ul').eq(0).find('a[data-href="'+(activeDiv+1)+'"]').addClass('is-active');
+
+      $('.vertical-dots-nav ul').find('li').removeClass();
+      $('.vertical-dots-nav ul').find('li[data-href="'+(activeDiv+1)+'"]').addClass('is-active');
+
+      testAnim(theDivs[activeDiv]);
       calcTriggers();
+      setTimeout(function(){
+        $(theDivs[activeDiv]).removeClass('blurred');
+      }, 500);
     }
 
     function calcTriggers()

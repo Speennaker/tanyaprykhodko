@@ -1,120 +1,223 @@
+<div id="loader-wrapper">
+	<div id="loader"></div><div class="loader-section section-left"></div><div class="loader-section section-right"></div>
+</div>
+<a href="#" target="_blank" class="b_portfolio-label"><span>Портфолио</span></a>
+<!-- [ wrapper -->
 <div class="b_page-wrap">
 	<div class="b_sections-container">
-		<div class="b_section-wrap is-1" data-id-"1">
-			<p>1 <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero eveniet, atque nulla deleniti temporibus nostrum ea quaerat impedit nemo vero laudantium, laboriosam, soluta voluptatum officiis inventore aut! Rem repellendus nihil voluptatem fuga eaque ratione quisquam ab sed cum, aperiam dolore voluptate iure soluta, nostrum id dolorum quam, impedit voluptatum voluptatibus aut modi provident quo optio quis. Nisi sit inventore, doloribus.</p>
-		</div>
-		<div class="b_section-wrap is-2" data-id-"2">
-			<p>2 <br>	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero eveniet, atque nulla deleniti temporibus nostrum ea quaerat impedit nemo vero laudantium, laboriosam, soluta voluptatum officiis inventore aut! Rem repellendus nihil voluptatem fuga eaque ratione quisquam ab sed cum, aperiam dolore voluptate iure soluta, nostrum id dolorum quam, impedit voluptatum voluptatibus aut modi provident quo optio quis. Nisi sit inventore, doloribus.</p>
-		</div>
-		<div class="b_section-wrap is-3" data-id-"3">
-			<p>3 <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero eveniet, atque nulla deleniti temporibus nostrum ea quaerat impedit nemo vero laudantium, laboriosam, soluta voluptatum officiis inventore aut! Rem repellendus nihil voluptatem fuga eaque ratione quisquam ab sed cum, aperiam dolore voluptate iure soluta, nostrum id dolorum quam, impedit voluptatum voluptatibus aut modi provident quo optio quis. Nisi sit inventore, doloribus.</p>
-		</div>
-		<div class="b_section-wrap is-4" data-id-"4">
-			<p>4 <br>	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero eveniet, atque nulla deleniti temporibus nostrum ea quaerat impedit nemo vero laudantium, laboriosam, soluta voluptatum officiis inventore aut! Rem repellendus nihil voluptatem fuga eaque ratione quisquam ab sed cum, aperiam dolore voluptate iure soluta, nostrum id dolorum quam, impedit voluptatum voluptatibus aut modi provident quo optio quis. Nisi sit inventore, doloribus.</p>
-		</div>
-		<div class="b_section-wrap is-5" data-id-"5">
-			<p>5 <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero eveniet, atque nulla deleniti temporibus nostrum ea quaerat impedit nemo vero laudantium, laboriosam, soluta voluptatum officiis inventore aut! Rem repellendus nihil voluptatem fuga eaque ratione quisquam ab sed cum, aperiam dolore voluptate iure soluta, nostrum id dolorum quam, impedit voluptatum voluptatibus aut modi provident quo optio quis. Nisi sit inventore, doloribus.</p>
-		</div>
-		<div class="b_section-wrap is-6" data-id-"6">
-			<p>6 <br>	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero eveniet, atque nulla deleniti temporibus nostrum ea quaerat impedit nemo vero laudantium, laboriosam, soluta voluptatum officiis inventore aut! Rem repellendus nihil voluptatem fuga eaque ratione quisquam ab sed cum, aperiam dolore voluptate iure soluta, nostrum id dolorum quam, impedit voluptatum voluptatibus aut modi provident quo optio quis. Nisi sit inventore, doloribus.</p>
-		</div>
-	</div>
-
-	<div class="b_page-nav">
-		<div class="container-fluid">
-			<nav class="b_page-nav_list col-md-9">
-				<ul>
-					<li><a href="#" data-href="1">section 1</a></li>
-					<li><a href="#" data-href="2">section 2</a></li>
-					<li><a href="#" data-href="3">section 3</a></li>
-					<li><a href="#" data-href="4">section 4</a></li>
-					<li><a href="#" data-href="5">section 5</a></li>
-				</ul>
-			</nav>
-			<div class="col-md-3 text-right">
-				<a href="#" class="btn btn-xs btn-default">soc 1</a>
-				<a href="#" class="btn btn-xs btn-default">soc 2</a>
-				<a href="#" class="btn btn-xs btn-default">soc 3</a>
+		<!-- intro screen -->
+		<section class="b_section-wrap is-intro" data-id="1">
+			<div class="ps-table">
+				<div class="toAnimate" data-animtype="fadeInDown" data-animdyration="400">
+					<div class="row">
+						<div class="col-lg-10 avatar_wrap col-lg-offset-1 col-md-10 col-md-offset-1">
+							<p><img src="assets/images/logo_on-dark.png" alt="Tania Prichodko"></p>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
+			<!-- vertical align logo -->
+			<script>
+				(function(){
+					verticalAlignLogo();
+					window.addEventListener('resize', verticalAlignLogo, false);
+					function verticalAlignLogo(){
+						var il = document.querySelector('.ps-table');
+						var ilPar = il.parentNode;
+						il.style.marginTop = (ilPar.clientHeight/2) - (il.clientHeight/2) - 60 + 'px';
+					}
+				})();
+			</script>
+			<div class="scoll-down_ani">
+				<svg class="scoll-down_ani_arrows"><path class="a1" d="M0 0 L30 32 L60 0"></path><path class="a2" d="M0 20 L30 52 L60 20"></path><path class="a3" d="M0 40 L30 72 L60 40"></path></svg>
+			</div>
+		</section>
+		<!-- / intro screen -->
+
+		<!-- 1 -->
+		<section class="b_section-wrap blurred is-1 blurred" data-id="2">
+			<div class="toAnimate" data-animtype="slideInLeft" data-animdyration="400">
+				<p class="b_section_title is-white">Beauty</p>
+			</div>
+		</section>
+		<!-- / 1 -->
+
+		<!-- 2 -->
+		<section class="b_section-wrap blurred is-3" data-id="3">
+			<div class="toAnimate" data-animtype="slideInDown" data-animdyration="400">
+				<p class="b_section_title is-white">Elegance</p>
+			</div>
+		</section>
+		<!-- /2 -->
+
+
+		<!-- 3 -->
+		<section class="b_section-wrap b_section_contacts blurred is-13 color-light" data-id="4">
+			<div class="toAnimate" data-animtype="slideInDown" data-animdyration="400">
+				<p class="b_section_title is-white">Desire</p>
+			</div>
+		</section>
+		<!-- /3 -->
+
+
+		<!-- 4 -->
+		<section class="b_section-wrap is-6 blurred" data-id="5">
+			<div class="toAnimate" data-animtype="slideInDown" data-animdyration="400">
+				<p class="b_section_title is-white">Infinity</p>
+			</div>
+		</section>
+		<!-- /4 -->
+
+
+		<!-- 5 -->
+		<section class="b_section-wrap is-10 blurred" data-id="8">
+			<p class="b_section_title is-white text-left">Tenderness</p>
+		</section>
+		<!-- /5 -->
+
+		<!-- 6 -->
+		<section class="b_section-wrap is-11 blurred" data-id="9">
+			<div class="toAnimate" data-animtype="slideInDown" data-animdyration="400">
+				<p class="b_section_title is-white">Royalty</p>
+			</div>
+		</section>
+		<!-- /6 -->
+
+
+		<!-- 7 -->
+		<section class="b_section-wrap is-12 blurred" data-id="10">
+			<span class="b_section_title is-white">Dream</span>
+		</section>
+		<!-- /7 -->
+
+		<!-- 8 -->
+		<section class="b_section-wrap b_section_contacts blurred is-7 color-light" data-id="11">
+			<div class="toAnimate" data-animtype="slideInDown" data-animdyration="400">
+				<p class="b_section_title is-white">Sopthistication</p>
+			</div>
+		</section>
+		<!-- /8 -->
+
+		<!-- 9 -->
+		<section class="b_section-wrap is-8 blurred" data-id="12">
+			<div class="toAnimate" data-animtype="slideInDown" data-animdyration="400">
+				<p class="b_section_title is-white">Emotions</p>
+			</div>
+		</section>
+		<!-- /9 -->
+		
+		<!-- contact section -->
+		<section class="b_section-wrap b_section_contacts blurred page_about-me" data-id="13">
+			<div class="toAnimate" data-animtype="sliadeInLeft" data-animdyration="400">
+				<div class="b_section_content_wrap">				
+						<div class="row">
+							<div class="b_section_content">
+								<div class="col-sm-3">
+									<table class="contacts-table">
+										<tr>
+											<td><span class='i-entypo'>&#xe724;</span></td>
+											<td>Dubai, UAE</td>
+										</tr>
+
+										<tr>
+											<td><span class='i-entypo'>&#x2709;</span></td>
+											<td><a target="_blank" href="mailto:info@tanyaprihodko.com">info@tanyaprihodko.com</a></td>
+										</tr>
+										<tr>
+											<td><span class='i-entypo'>&#x1f4de;</span></td>
+											<td>+971553288414</td>
+										</tr>
+									</table>
+								</div>
+								<div class="col-sm-9">
+									<div class="default-skin" id="contact_ov">
+										<p class="b_section_title is-without_line">Контакты:</p>
+										<br>
+										<p>For information on bookings, pricing and all other questions please use this form to contact me. <br>Please allow 2-4 business days to receive a response.</p>
+										<div class="feedback_form">
+											<div class="form-group">
+												<label class="control-label">Your Name (required)</label>
+												<input type="text" class="form-control">
+											</div>
+											<div class="form-group">
+												<label class="control-label">Your Email (required)</label>
+												<input type="text" class="form-control">
+											</div>
+											<div class="form-group">
+												<label class="control-label">Subject</label>
+												<input type="text" class="form-control">
+											</div>
+											<div class="form-group">
+												<label class="control-label">Date Desired</label>
+												<input type="text" class="form-control">
+											</div>
+											<div class="form-group">
+												<label class="control-label">Your Message</label>
+												<textarea class="form-control" id="" cols="30" rows="6"></textarea>
+											</div>
+											<div class="form-group">
+												<button type="button" class="btn btn-default bnt-lg">Send</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<script>
+			(function(){
+				var el = document.querySelector('#contact_ov.default-skin');
+				el.style.height = (window.innerHeight - 100) +'px';
+			})();
+			</script>
+			<!-- / end contact section -->
+
+			<!-- page arrows -->
+			<nav class="page-arrows">
+				<span class="arrow" id="block-up-arrow"></span>
+				<span class="arrow arrow-next" id="block-down-arrow"></span>
+			</nav>
+			<!-- / end arrows -->
+
+			<!-- vertical dots -->
+			<div class="vertical-dots-nav"><ul></ul></div>
+			<!-- / vertical dots -->
+
+
+			<!-- navigation -->
+			<nav class="b_page-nav_wrapper">
+				<div class="b_page-nav navbar navbar-fixed-bottom">
+					<div class="container-fluid">
+						<div class="navbar-header">
+				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">Toggle Menu</button>
+				    </div>
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<nav class="b_page-nav_list navbar-left">
+								<ul>
+									<li><a href="#" data-href="1">Главная</a></li>
+									<li><a href="#" data-href="13">Контакты</a></li>
+									<li><a href="#" target="_blank">Обо Мне</a></li>
+									<li><a href="#" target="_blank">Портфолио</a></li>
+								</ul>
+							</nav>
+							<div class="navbar-right text-right">
+								<div class="wrapper">
+									<div class="social">&#62220;</div>
+								  <div class="social entypo-infinity"></div>
+								  <div class="social">&#xf32d;</div>
+								</div>
+								<ul class="langs">
+									<li class="is-active"><a href="#">EN</a></li>
+									<li><a href="#">RU</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<!-- /navigation -->
 	</div>
 </div>
-
-
-<!-- <div class="container-fluid main_row" id="first_row">
-	<div class="main_text" id="first_text">
-		"Фотографировать может только тот, кто сумеет выстроить на одной оси глаз, голову и сердце"
-		<span class="author">Анри Картье-Брессон</span>
-	</div>
-</div>
-<div class="container-fluid main_row" id="second_row">
-</div>
-
-<div class="container-fluid main_row" id="third_row">
-	<div class="main_text" id="third_text">
-		Привет! Спасибо, что зашли на мой веб сайт! Давайте знакомиться!
-		Меня зовут Татьяна Приходько, я - украинский фотограф, в данный момент проживаю в Дубае,
-		ОАЭ. Я работаю в различных направлениях, в частности: портреты, постановочные сьемки,
-		реклама одежды и аксессуаров, модельные и семейные фотосессии, свадебные фотосессии,
-		репортажная съемка и многое другое.
-		Творчеством увлекаюсь с самого детства. Пробовала себя в качестве модели, стилиста, визажиста
-		и гримера. С 14 лет принимала участие в конкурсах и съемках, тесно сотрудничая с
-		профессиональными фотографами, режиссерами, актерами, дизайнерами и артистами, которые,
-		впоследствии, сыграли значительную роль в моей собственной жизни. Желание изучать,
-		создавать и восхищаться сопровождает меня повсюду. В своей работе я неизменно стремлюсь к
-		совершенствованию, и стремлюсь привнести в мир фотографии совершенно новые оттенки.
-		Мне говорят, что мои фотографии отличаются эмоциональностью и блеском. Каждая фотография
-		передает настроение запечатленного момента и его исключительность. Именно в этом, наверное,
-		и состоит мой характер и моё восприятие окружающего мира.
-		Помимо фотографии, я профессионально занимаюсь конным спортом, беспрерывно путешествую,
-		увлекаюсь модой и автомобилями. Моим жизненным девизом является фраза гениального Стива
-		Джобса:  “Только безумец верит, что может изменить мир, — и потому меняет его”. Данный
-		слоган находит отражение и в моих работах, в чем Вы можете лично убедиться в разделе
-		«Портофолио» на этом сайте и на моих страничках в Facebook, Instagram и 500px.
-	</div>
-</div>
-
-<div class="container-fluid main_row" id="fourth_row"></div>
-
-<div class="container-fluid main_row" id="fifth_row">
-	<div class="main_text" id="fifth_text">
-		Я работаю в следующих направлениях:
-		<br><br>
-		1) Модные фотосессии
-		<br><br>
-		2) Свадебные фотосессии
-		<br><br>
-		3) Семейные фотосессии
-		<br><br>
-		4) Репортажная съемка
-		<br><br>
-		5) Путешествия
-		<br><br>
-		6) Портреты
-	</div>
-</div>
-
-<div class="container-fluid main_row" id="sixth_row">
-	<div class="main_text" id="sixth_text">
-		В процессе работы всегда стараюсь найти подход к заказчику и учесть  в процессе работы все его
-		пожелания. Практически в любой ситуации возможен компромисс, включая вопросы бюджета и
-		локации съемки.
-		Я делаю профессиональные фотосессии для моделей и любителей, снимаю мероприятия,
-		стараясь точно передать атмосферу и самые яркие моменты события. Также, провожу
-		репортажные и художественные съемки в самых отдаленных уголках мира.
-		Вы можете быть уверенны, что получите качественные профессиональные снимки, которыми
-		непременно захочется поделиться. Вместе, мы воплотим в жизнь все Ваши идеи, руководствуясь
-		европейским опытом в арабском мире.
-	</div>
-</div>
-
-<div class="container-fluid main_row" id="seventh_row"></div>
-
-<div class="container-fluid main_row" id="eighth_row">
-    <h2>Контакты</h2>
-    <div class="main_text" id="eighth_text">
-        <div class="contacts_row"><span class="glyphicon glyphicon-home"></span>Dubai, UAE</div>
-        <div class="contacts_row"><span class="glyphicon glyphicon-phone-alt"></span>+971553288414</div>
-        <div class="contacts_row"><span class="glyphicon glyphicon-envelope"></span><a target="_top" href="mailto:info@tanyaprihodko.com">info@tanyaprihodko.com</a></div>
-    </div>
-</div> -->
+<!-- wrapper ] -->
