@@ -17,13 +17,14 @@ class Index extends MY_base_controller{
 
     public function portfolio_list()
     {
-        $this->render_view('portfolio_list', [], ['page_title' => $this->page_title], 'index');
+        
+        $this->render_view('about-me', [], ['page_title' => $this->page_title], 'index');
     }
 
     public function portfolio($id)
     {
 
-        $this->render_view('portfolio', [], ['page_title' => $this->page_title], 'index');
+        $this->render_view('about-me', [], ['page_title' => $this->page_title], 'index');
     }
 
 
