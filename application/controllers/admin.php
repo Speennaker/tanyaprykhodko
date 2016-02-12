@@ -154,7 +154,7 @@ class Admin extends MY_base_controller{
             'page_title' => 'Main Title', // Заголовок страницы
             'custom_js' => $js, // Кастомные JS
             'custom_css' => $css, // Кастомные стили
-            'menus' => $this->get_menus(), // Элементы бокового меню
+            'menus' => $this->menus, // Элементы бокового меню
             'menu_item' => $this->module, // Текущий элемент меню,
             'breadcrumbs' => $breadcrumbs
         ], $return);

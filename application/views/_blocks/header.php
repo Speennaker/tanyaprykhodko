@@ -31,7 +31,8 @@
 	<?= css('jquery.custom-scrollbar.css')?>
 	<?= css('main.css')?>
 	<?= css('common.css')?>
+	<script type="text/javascript"> var contacts = '<?=isset($contacts) ? $contacts : 0;?>'</script>
 	<!-- fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Exo+2:400,300,100,200,500,600,700,300italic,500italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 </head>
-<body>
+<body class="<?=$this->custom_body_class?>">

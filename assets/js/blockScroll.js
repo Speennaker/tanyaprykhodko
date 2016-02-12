@@ -138,6 +138,11 @@
       else
         $("#block-down-arrow").show();
       activeDiv = number;
+      if(theDivs[activeDiv] == undefined)
+      {
+        return false;
+      }
+
       activelyScrolling = true;
       $('html, body').animate({scrollTop: $(theDivs[activeDiv]).offset().top}, settings.scrollDuration, 'linear', function() {
         $(theDivs[activeDiv]).animate({opacity: 1}, settings.fadeDuration,'linear', function() { 

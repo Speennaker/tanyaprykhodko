@@ -22,6 +22,7 @@ abstract class MY_base_controller extends CI_Controller {
     ];
     public $current_language = 'english';
     public $current_language_short = 'en';
+    public $custom_body_class = '';
 
 
     function __construct($menu_item = null)
@@ -56,7 +57,7 @@ abstract class MY_base_controller extends CI_Controller {
                 'additional_params' => 'data-href="1"'
             ],
             'contacts' => [
-                'url' =>  base_url('index#contacts'),
+                'url' =>  base_url('contacts'),
                 'title' => lang('contacts'),
                 'additional_params' => 'data-href="11"'
             ],

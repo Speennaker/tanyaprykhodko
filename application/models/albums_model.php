@@ -40,6 +40,22 @@ class Albums_model extends MY_base_model
         return $result;
     }
 
+    public function get_album_by_slug($slug, $language)
+    {
+
+        /** @var  $CI Index */
+        $CI = &get_instance();
+        $this->db->select('a.*, at.title, at.description');
+        $this->db->join($this->albums_texts_model->table.' at', 'at.albums_id = a.id ');
+        $this->db->join($CI->languages_model->table.' l', 'l.id = at.languages_id');
+        $result = $this->db->get_where($this->table.' a',['a.breadcrumb' => $slug, 'l.code' => $language])->row_array();
+        if(!$result) return $result;
+//        $result['texts'] = $this->albums_texts_model->get_albums_text($result['id'], $language);
+        $result['photos_list'] = $this->get_albums_images($result['id']);
+        $result['photos'] = count($result['photos_list']);
+        return $result;
+    }
+
 
     protected function save_cover($cover, $album_id)
     {
@@ -50,8 +66,9 @@ class Albums_model extends MY_base_model
         return rename($cover, $album_path.'main.png');
     }
 
-    public function get_all()
+    public function get_all($active_only = false)
     {
+        if($active_only) $this->db->where('active', 1);
         $results = $this->db->get($this->table)->result_array();
         if(!$results) return $results;
         foreach($results as &$result)

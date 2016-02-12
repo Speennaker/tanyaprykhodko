@@ -8,7 +8,7 @@
                 <nav class="b_page-nav_list navbar-left">
                     <ul>
                         <?php foreach($menus as $key => $menu):?>
-                            <li <?=$key == $menu_item ? 'class="active"' : ''?>><a href="<?=$menu['url']?>" <?=$menu['additional_params']?>><?=$menu['title']?></a></li>
+                            <li <?=$key == $menu_item ? 'class="active"' : ''?>><a <?=$key == $menu_item ? 'class="is-active"' : ''?> href="<?=$menu['url']?>" <?=$menu['additional_params']?>><?=$menu['title']?></a></li>
                         <?php endforeach;?>
                     </ul>
                 </nav>

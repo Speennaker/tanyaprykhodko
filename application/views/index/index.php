@@ -123,7 +123,7 @@
 
 										<tr>
 											<td><span class='i-entypo'>&#x2709;</span></td>
-											<td><a target="_blank" href="mailto:info@tanyaprihodko.com">info@tanyaprykhodko.com</a></td>
+											<td><a target="_blank" href="mailto:info@tanyaprykhodko.com">info@tanyaprykhodko.com</a></td>
 										</tr>
 										<tr>
 											<td><span class='i-entypo'>&#x1f4de;</span></td>

@@ -17,7 +17,7 @@ class Albums_texts_model extends MY_base_model
         return $this->db->insert_batch($this->table, $data);
     }
 
-    public function get_albums_texts($album_id )
+    public function get_albums_texts($album_id)
     {
         $res =  $this->db->get_where($this->table, ['albums_id' => $album_id])->result_array();
         if(!$res) return $res;
@@ -27,5 +27,15 @@ class Albums_texts_model extends MY_base_model
             $result[$row['languages_id']] = $row;
         }
         return $result;
+    }
+
+    public function get_albums_text($album_id, $language)
+    {
+        /** @var  $CI Index */
+        $CI = &get_instance();
+        $this->db->select('at.title, at.description');
+        $this->db->join($CI->languages_model->table.' l', 'l.id = at.languages_id');
+        $res =  $this->db->get_where($this->table.' at', ['albums_id' => $album_id, 'code' => $language])->row_array();
+        return $res;
     }
 }

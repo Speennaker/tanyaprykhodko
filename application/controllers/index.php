@@ -4,6 +4,8 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/application/controllers/MY_base_control
 class Index extends MY_base_controller{
 
     public $page_title = 'Tanya Prykhodko Photography';
+    /** @var  albums_model */
+    public $albums_model;
     function __construct()
     {
         parent::__construct('home');
@@ -15,16 +17,26 @@ class Index extends MY_base_controller{
         $this->render_view('index', [], ['page_title' => $this->page_title, 'contacts' => $contacts], 'index');
     }
 
-    public function portfolio_list()
+    public function about()
     {
-        
+
+        $this->menu_item = 'about_me';
+        $this->custom_body_class = 'about-me_page ';
         $this->render_view('about-me', [], ['page_title' => $this->page_title], 'index');
     }
 
-    public function portfolio($id)
+    public function portfolio_list()
     {
-
+        $this->load->model('albums_model');
+        $this->menu_item = 'portfolio';
         $this->render_view('about-me', [], ['page_title' => $this->page_title], 'index');
+    }
+
+    public function portfolio($slug)
+    {
+        $this->load->model('albums_model');
+        $this->menu_item = 'portfolio';
+        $this->render_view('portfolio', [], ['page_title' => $this->page_title, 'album' => $this->albums_model->get_album_by_slug($slug, $this->current_language_short)], 'index');
     }
 
 

@@ -54,6 +54,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['contacts'] = 'index/index/1';
+$route['about'] = 'index/about';
 $route['portfolio/(:any)'] = 'index/portfolio/$1';
 $route['portfolio'] = 'index/portfolio_list';
 $route['(:any)/ajax_(:any)'] = '$1/ajax/$2';

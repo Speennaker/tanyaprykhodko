@@ -5,11 +5,11 @@
 			<table class="contacts-table">
 				<tr>
 					<td><span class='i-entypo'>&#xe724;</span></td>
-					<td>Dubai, UAE</td>
+					<td><?=lang('dubai')?></td>
 				</tr>
 				<tr>
 					<td><span class='i-entypo'>&#x2709;</span></td>
-					<td><a target="_blank" href="mailto:info@tanyaprihodko.com">info@tanyaprihodko.com</a></td>
+					<td><a target="_blank" href="mailto:info@tanyaprikhodko.com">info@tanyaprikhodko.com</a></td>
 				</tr>
 				<tr>
 					<td><span class='i-entypo'>&#x1f4de;</span></td>
@@ -18,9 +18,9 @@
 				<tr>
 					<td colspan="2">
 						<div class="wrapper">
-							<div class="social">&#62220;</div>
-						  <div class="social entypo-infinity"></div>
-						  <div class="social">&#xf32d;</div>
+							<a href="https://www.facebook.com/TanyaPrykhodkoPhotography/?fref=ts" target="_blank"><div class="social">&#62220;</div></a>
+							<a href="https://500px.com/tanyaprykhodko" target="_blank"><div class="social entypo-infinity"></div></a>
+							<a href="https://www.instagram.com/tanyas_angels_be_like/" target="_blank"><div class="social">&#xf32d;</div></a>
 						</div>
 					</td>
 				</tr>
@@ -29,17 +29,11 @@
 		<div class="col-md-9 col-sm-8 about-me_article">
 			<div class="default-skin" style="height:500px;">
 				<br>
-				<p class="about-me_article_title">Обо мне</p>
+				<p class="about-me_article_title"><?=lang('about_me')?></p>
 				<div class="row">
 					<div class="col-xs-12">
-						<img src="assets/images/tan.jpg" class="pull-left main-img"  alt="">
-						<p>Меня зовут Татьяна Приходько, я - украинский фотограф, в данный момент проживаю в Дубае, ОАЭ. Я работаю в различных направлениях, в частности: портреты, реклама одежды и аксессуаров, модельные портфолио, свадебные фотосессии, и многое другое.</p>
-						<p>Творчеством увлекаюсь с самого детства. Пробовала себя в качестве модели, стилиста-визажиста и гримера. С 14 лет принимала участие в конкурсах и съемках, тесно сотрудничая с профессиональными фотографами, режиссерами, актерами, дизайнерами и артистами, которые, впоследствии, сыграли значительную роль в моей творческой жизни. Желание изучать, создавать и восхищаться сопровождает меня повсюду. В своей работе я неизменно стремлюсь к совершенствованию, и стремлюсь привнести в мир фотографии совершенно новые оттенки. </p>
-						<p>Мне говорят, что мои фотографии отличаются эмоциональностью и блеском. Каждая фотография передает настроение запечатленного момента и его исключительность. Именно в этом, наверное, и состоит мой характер и моё восприятие окружающего мира.</p>
-						<p>Помимо фотографии, я профессионально занимаюсь конным спортом, беспрерывно путешествую, увлекаюсь модой и автомобилями. Моим жизненным девизом является фраза гениального Стива Джобса:  “Только безумец верит, что может изменить мир, — и потому меняет его”. Данный слоган находит отражение и в моих работах, в чем Вы можете лично убедиться в разделе «Портофолио» на этом сайте и на моей страничке в Facebook.</p>
-						<p>В процессе работы всегда стараюсь найти подход к заказчику и учесть в процессе работы все его пожелания. Практически в любой ситуации возможен компромисс, включая вопросы бюджета и локации съемки. </p>
-						<p>Я делаю профессиональные фотосессии для моделей и любителей, снимаю мероприятия, стараясь точно передать атмосферу и самые яркие моменты события. Также, провожу свадебные и художественные съемки в самых отдаленных уголках мира.</p>
-						<p>Вы можете быть уверенны, что получите качественные профессиональные снимки, которыми непременно захочется поделиться.</p>
+						<img src="<?=asset_url()?>/images/tan.jpg" class="pull-left main-img"  alt="">
+						<?=lang('about_me_text')?>
 						<br>
 					</div>
 
@@ -47,14 +41,14 @@
 			</div>
 		</div>
 	</div>
+	<!-- navigation -->
+	<?=$this->load->view('_blocks/nav_panel', [], true);?>
+	<!-- /navigation -->
 </div>
 
 <script>
 (function(){
 	var el = document.querySelector('.default-skin');
 	el.style.height = (window.innerHeight - 40) +'px';
-
-	// add class to body
-	document.querySelector('body').classList.add('about-me_page');
 })();
 </script>
