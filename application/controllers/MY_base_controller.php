@@ -8,6 +8,7 @@ abstract class MY_base_controller extends CI_Controller {
     /** @var  CI_Loader */
     public $load;
     protected $menu_item;
+    protected $menus = [];
     public $bulk_actions = [];
     /** @var  languages_model */
     public $languages_model;
@@ -29,6 +30,7 @@ abstract class MY_base_controller extends CI_Controller {
         $this->menu_item = $menu_item;
         $this->load->model('languages_model');
         $get_lang = $this->input->get('l');
+//        dump($this->lang->language);die;
         if($get_lang && array_key_exists($get_lang, $this->long_to_short))
         {
             $this->current_language = $get_lang;
@@ -47,6 +49,28 @@ abstract class MY_base_controller extends CI_Controller {
         }
         $this->lang->load("main",$this->current_language);
         $this->current_language_short = $this->long_to_short[$this->current_language];
+        $this->menus = [
+            'home' => [
+                'url' => base_url(''),
+                'title' => lang('home'),
+                'additional_params' => 'data-href="1"'
+            ],
+            'contacts' => [
+                'url' =>  base_url('index#contacts'),
+                'title' => lang('contacts'),
+                'additional_params' => 'data-href="11"'
+            ],
+            'about_me' => [
+                'url' => base_url('about'),
+                'title' => lang('about_me'),
+                'additional_params' => ''
+            ],
+            'portfolio' => [
+                'url' => base_url('portfolio'),
+                'title' => lang('portfolio'),
+                'additional_params' => ''
+            ]
+        ];
     }
 
     private function getLanguage($default = 'english')
@@ -91,7 +115,7 @@ abstract class MY_base_controller extends CI_Controller {
             'page_title' => isset($data['page_title']) ? $data['page_title'] : '', // Заголовок страницы
             'custom_js' => $js, // Кастомные JS
             'custom_css' => $css, // Кастомные стили
-            'menus' => $this->get_menus(), // Элементы бокового меню
+            'menus' => $this->menus, // Элементы бокового меню
             'menu_item' => $this->menu_item, // Текущий элемент меню
             'breadcrumbs' => $breadcrumbs
 
@@ -106,26 +130,6 @@ abstract class MY_base_controller extends CI_Controller {
         if($return) return implode('', $page);
     }
 
-    protected function get_menus()
-    {
-        $menus = [
-//            [
-//                'admin' => [
-//                    'url' => '',
-//                    'title' => lang('dashboard_title')
-//                ],
-//                'categories' => [
-//                    'url' => 'categories',
-//                    'title' => lang('categories_title')
-//                ],
-//                'rules' => [
-//                    'url' => 'rules',
-//                    'title' => lang('rules_title')
-//                ],
-//            ]
-        ];
-        return $menus;
-    }
 
     public function ajax($function)
     {

@@ -7,15 +7,20 @@
 	<meta content="width=device-width, initial-scale=1" name="viewport">
  	<title><?=$page_title?></title>
 	<?= js('jquery/jquery.js')?>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<?= js('../css/bootstrap/dist/js/bootstrap.min.js')?>
 	<?= js('uploadify/jquery.uploadify.min.js')?>
 	<?= js('jquery/jquery.confirm.min.js')?>
+	<?= js('jquery/jquery.datePicker.js')?>
   <?= js('blockScroll.js')?>
   <?= js('jquery.custom-scrollbar.min.js')?>
 	<?= js('jquery/jquery.validate.min.js')?>
-  <?= $this->current_language_short != 'en' ? ('jquery/localization/messages_'.$this->current_language_short.'.js') : ''?>
+  <?= $this->current_language_short != 'en' ? js('jquery/localization/messages_'.$this->current_language_short.'.js') : ''?>
+	<?= js('jquery/localization/datepicker-'.$this->current_language_short.'.js')?>
   <script type="text/javascript"> var base_url = '<?=base_url()?>'; var language = '<?=$this->current_language_short?>'; isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);</script>
   <?= js('main.js')?>
+	<?= js('common.js')?>
 	<?php foreach($custom_js as $r):?>
 	<?= js($r)?>
 	<?php endforeach;?>

@@ -6,12 +6,13 @@ class Index extends MY_base_controller{
     public $page_title = 'Tanya Prykhodko Photography';
     function __construct()
     {
-        parent::__construct('index');
+        parent::__construct('home');
     }
 
-    public function index()
+    public function index($contacts = 0)
     {
-        $this->render_view('index', [], ['page_title' => $this->page_title], 'index');
+        $this->menus['home']['url'] = $this->menus['contacts']['url'] = '#';
+        $this->render_view('index', [], ['page_title' => $this->page_title, 'contacts' => $contacts], 'index');
     }
 
     public function portfolio_list()
@@ -110,9 +111,8 @@ class Index extends MY_base_controller{
             return false;
         }
         else {
-            echo 'Error!';
+            echo 'error';
             return false;
         }
     }
-
 }

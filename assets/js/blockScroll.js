@@ -144,7 +144,8 @@
         });
       });
       $('.b_page-nav_list ul').eq(0).find('a').removeClass();
-      $('.b_page-nav_list ul').eq(0).find('a[data-href="'+(activeDiv+1)+'"]').addClass('is-active');
+      var activeNumber = (activeDiv+1) != 11 ? 1 : 11;
+      $('.b_page-nav_list ul').eq(0).find('a[data-href="'+activeNumber+'"]').addClass('is-active');
 
       $('.vertical-dots-nav ul').find('li').removeClass();
       $('.vertical-dots-nav ul').find('li[data-href="'+(activeDiv+1)+'"]').addClass('is-active');

@@ -1,7 +1,8 @@
+<script type="text/javascript"> var contacts = '<?=$contacts;?>'</script>
 <div id="loader-wrapper">
 	<div id="loader"></div><div class="loader-section section-left"></div><div class="loader-section section-right"></div>
 </div>
-<a href="#" target="_blank" class="b_portfolio-label"><span>Портфолио</span></a>
+<a href="#" class="b_portfolio-label"><span><?= lang('portfolio')?></span></a>
 <!-- [ wrapper -->
 <div class="b_page-wrap">
 	<div class="b_sections-container">
@@ -11,7 +12,7 @@
 				<div class="toAnimate" data-animtype="fadeInDown" data-animdyration="400">
 					<div class="row">
 						<div class="col-lg-10 avatar_wrap col-lg-offset-1 col-md-10 col-md-offset-1">
-							<p><img src="assets/images/logo_on-dark.png" alt="Tania Prichodko"></p>
+							<p><img src="<?=asset_url()?>/images/logo_on-dark.png" alt="Tania Prichodko"></p>
 						</div>
 					</div>
 				</div>
@@ -43,18 +44,19 @@
 		<!-- / 1 -->
 
 		<!-- 2 -->
-		<section class="b_section-wrap blurred is-3" data-id="3">
+		<section class="b_section-wrap b_section_contacts blurred is-13 color-light" data-id="3">
 			<div class="toAnimate" data-animtype="slideInDown" data-animdyration="400">
-				<p class="b_section_title is-white">Elegance</p>
+				<p class="b_section_title is-white">Desire</p>
 			</div>
 		</section>
+
 		<!-- /2 -->
 
 
 		<!-- 3 -->
-		<section class="b_section-wrap b_section_contacts blurred is-13 color-light" data-id="4">
+		<section class="b_section-wrap blurred is-3" data-id="4">
 			<div class="toAnimate" data-animtype="slideInDown" data-animdyration="400">
-				<p class="b_section_title is-white">Desire</p>
+				<p class="b_section_title is-white">Elegance</p>
 			</div>
 		</section>
 		<!-- /3 -->
@@ -70,13 +72,13 @@
 
 
 		<!-- 5 -->
-		<section class="b_section-wrap is-10 blurred" data-id="8">
+		<section class="b_section-wrap is-10 blurred" data-id="6">
 			<p class="b_section_title is-white text-left">Tenderness</p>
 		</section>
 		<!-- /5 -->
 
 		<!-- 6 -->
-		<section class="b_section-wrap is-11 blurred" data-id="9">
+		<section class="b_section-wrap is-11 blurred" data-id="7">
 			<div class="toAnimate" data-animtype="slideInDown" data-animdyration="400">
 				<p class="b_section_title is-white">Royalty</p>
 			</div>
@@ -85,13 +87,13 @@
 
 
 		<!-- 7 -->
-		<section class="b_section-wrap is-12 blurred" data-id="10">
+		<section class="b_section-wrap is-12 blurred" data-id="8">
 			<span class="b_section_title is-white">Dream</span>
 		</section>
 		<!-- /7 -->
 
 		<!-- 8 -->
-		<section class="b_section-wrap b_section_contacts blurred is-7 color-light" data-id="11">
+		<section class="b_section-wrap b_section_contacts blurred is-7 color-light" data-id="9">
 			<div class="toAnimate" data-animtype="slideInDown" data-animdyration="400">
 				<p class="b_section_title is-white">Sopthistication</p>
 			</div>
@@ -99,7 +101,7 @@
 		<!-- /8 -->
 
 		<!-- 9 -->
-		<section class="b_section-wrap is-8 blurred" data-id="12">
+		<section class="b_section-wrap is-8 blurred" data-id="10">
 			<div class="toAnimate" data-animtype="slideInDown" data-animdyration="400">
 				<p class="b_section_title is-white">Emotions</p>
 			</div>
@@ -107,7 +109,7 @@
 		<!-- /9 -->
 		
 		<!-- contact section -->
-		<section class="b_section-wrap b_section_contacts blurred page_about-me" data-id="13">
+		<section class="b_section-wrap b_section_contacts blurred page_about-me" data-id="11" id="contacts">
 			<div class="toAnimate" data-animtype="sliadeInLeft" data-animdyration="400">
 				<div class="b_section_content_wrap">				
 						<div class="row">
@@ -116,12 +118,12 @@
 									<table class="contacts-table">
 										<tr>
 											<td><span class='i-entypo'>&#xe724;</span></td>
-											<td>Dubai, UAE</td>
+											<td><?=lang('dubai')?></td>
 										</tr>
 
 										<tr>
 											<td><span class='i-entypo'>&#x2709;</span></td>
-											<td><a target="_blank" href="mailto:info@tanyaprihodko.com">info@tanyaprihodko.com</a></td>
+											<td><a target="_blank" href="mailto:info@tanyaprihodko.com">info@tanyaprykhodko.com</a></td>
 										</tr>
 										<tr>
 											<td><span class='i-entypo'>&#x1f4de;</span></td>
@@ -131,33 +133,40 @@
 								</div>
 								<div class="col-sm-9">
 									<div class="default-skin" id="contact_ov">
-										<p class="b_section_title is-without_line">Контакты:</p>
+										<p class="b_section_title is-without_line"><?= lang('contacts')?>:</p>
 										<br>
-										<p>For information on bookings, pricing and all other questions please use this form to contact me. <br>Please allow 2-4 business days to receive a response.</p>
+										<p><?= lang('contact_form_title')?></p>
 										<div class="feedback_form">
-											<div class="form-group">
-												<label class="control-label">Your Name (required)</label>
-												<input type="text" class="form-control">
-											</div>
-											<div class="form-group">
-												<label class="control-label">Your Email (required)</label>
-												<input type="text" class="form-control">
-											</div>
-											<div class="form-group">
-												<label class="control-label">Subject</label>
-												<input type="text" class="form-control">
-											</div>
-											<div class="form-group">
-												<label class="control-label">Date Desired</label>
-												<input type="text" class="form-control">
-											</div>
-											<div class="form-group">
-												<label class="control-label">Your Message</label>
-												<textarea class="form-control" id="" cols="30" rows="6"></textarea>
-											</div>
-											<div class="form-group">
-												<button type="button" class="btn btn-default bnt-lg">Send</button>
-											</div>
+											<form id="contact_form" method="post">
+												<div class="form-group">
+													<label for="name" class="control-label"><?= lang('contact_form_name')?> (<?= lang('required')?>)</label>
+													<input type="text" class="form-control for_send" required="required" name="name">
+												</div>
+												<div class="form-group">
+													<label for="email" class="control-label"><?= lang('contact_form_email')?> (<?= lang('required')?>)</label>
+													<input type="email" required="required" class="form-control for_send" name="email">
+												</div>
+												<div class="form-group">
+													<label for="subject" class="control-label"><?= lang('contact_form_subject')?></label>
+													<input type="text" class="form-control for_send" name="subject">
+												</div>
+												<div class="form-group">
+													<label for="date" class="control-label"><?= lang('contact_form_date')?></label>
+													<input type="date" class="form-control datepicker for_send" name="date">
+												</div>
+												<div class="form-group">
+													<label for="message" class="control-label"><?= lang('contact_form_message')?> (<?= lang('required')?>)</label>
+													<textarea class="form-control for_send" name="message" required="required" id="" cols="30" rows="6"></textarea>
+												</div>
+												<div class="form-group">
+													<button type="button" id="send_form" class="btn btn-default bnt-lg"><?= lang('send')?></button>
+												</div>
+											</form>
+
+										</div>
+
+										<div class="feedback_form" id="success_sent" hidden="hidden">
+												<h1><?=lang('form_sent')?>!</h1>
 										</div>
 									</div>
 								</div>
@@ -169,7 +178,7 @@
 			<script>
 			(function(){
 				var el = document.querySelector('#contact_ov.default-skin');
-				el.style.height = (window.innerHeight - 100) +'px';
+				el.style.height = (window.innerHeight - 50)+'px';
 			})();
 			</script>
 			<!-- / end contact section -->
@@ -187,36 +196,7 @@
 
 
 			<!-- navigation -->
-			<nav class="b_page-nav_wrapper">
-				<div class="b_page-nav navbar navbar-fixed-bottom">
-					<div class="container-fluid">
-						<div class="navbar-header">
-				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">Toggle Menu</button>
-				    </div>
-						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-							<nav class="b_page-nav_list navbar-left">
-								<ul>
-									<li><a href="#" data-href="1">Главная</a></li>
-									<li><a href="#" data-href="13">Контакты</a></li>
-									<li><a href="#" target="_blank">Обо Мне</a></li>
-									<li><a href="#" target="_blank">Портфолио</a></li>
-								</ul>
-							</nav>
-							<div class="navbar-right text-right">
-								<div class="wrapper">
-									<div class="social">&#62220;</div>
-								  <div class="social entypo-infinity"></div>
-								  <div class="social">&#xf32d;</div>
-								</div>
-								<ul class="langs">
-									<li class="is-active"><a href="#">EN</a></li>
-									<li><a href="#">RU</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</nav>
+			<?=$this->load->view('_blocks/nav_panel', [], true);?>
 			<!-- /navigation -->
 	</div>
 </div>
