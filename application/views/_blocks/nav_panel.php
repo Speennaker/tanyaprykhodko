@@ -1,5 +1,5 @@
 <nav class="b_page-nav_wrapper">
-    <div class="b_page-nav navbar navbar-fixed-bottom">
+    <div class="b_page-nav navbar navbar-fixed-bottom is_shown">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><?= lang('menu')?></button>

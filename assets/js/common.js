@@ -23,6 +23,10 @@ $(document).ready(function () {
     $('body').addClass('loaded');
   }, 1000);
 
+  setTimeout(function(){
+    $('.b_page-nav').removeClass('is_shown');
+  }, 5000);
+
   // block scroller & links
   (function(){
     var blockScroller =  $(".b_sections-container").blockScroll({

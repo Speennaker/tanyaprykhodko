@@ -118,7 +118,7 @@ body{
 	transform: translateY(70px);
 	transition:all .5s ease-in-out;
 }
-.b_page-nav_wrapper:hover .b_page-nav{
+.b_page-nav_wrapper:hover .b_page-nav, .b_page-nav.is_shown{
 	transform: translateY(0);
 	/*opacity: 1;*/
 }

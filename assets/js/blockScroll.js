@@ -24,6 +24,7 @@
     var lastScrollPos;
     var activelyScrolling = false;
     var activeBackground= 0;
+    var time;
     
     // Ensure that all of the elements are hidden just in case the css is not setup properly
     if(settings.fadeBlocks)
@@ -125,7 +126,9 @@
     };
     
     function gotoDiv(number)
-    {      
+    {
+
+      clearTimeout(time);
       if(number == 0)
         $("#block-up-arrow").hide();
       else
@@ -155,6 +158,11 @@
       setTimeout(function(){
         $(theDivs[activeDiv]).removeClass('blurred');
       }, 500);
+      $('.b_page-nav').addClass('is_shown');
+
+      time = setTimeout(function(){
+        $('.b_page-nav').removeClass('is_shown');
+      }, 3000);
     }
 
     function calcTriggers()
