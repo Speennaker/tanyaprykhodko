@@ -1172,6 +1172,7 @@ opacity: .9;
 	position: fixed;
 	right: 15px;
 	top:100px;
+	z-index: 1020;
 }
 .vertical-dots-nav ul li{
 	display: block;

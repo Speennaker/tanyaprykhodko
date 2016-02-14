@@ -1,3 +1,10 @@
+<script type="text/javascript">
+	(function(){
+		var body = document.querySelector('body'),
+				className = 'about-me_page';
+		body.classList.add(className);
+	}());
+</script>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-3 col-sm-4">
@@ -48,7 +55,9 @@
 
 <script>
 (function(){
-	var el = document.querySelector('.default-skin');
-	el.style.height = (window.innerHeight - 40) +'px';
+	var el = document.querySelector('.default-skin'),
+			footerHeight = document.querySelector('.b_page-nav_wrapper').clientHeight,
+			h = window.innerHeight - footerHeight;
+	el.style.height = h +'px';
 })();
 </script>
