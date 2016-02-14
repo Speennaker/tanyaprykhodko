@@ -1224,3 +1224,181 @@ opacity: .9;
 	background: #fff;
 	margin: 5px 0 30px;
 }
+
+
+
+
+/**/
+
+
+.gallery_grid{
+	text-align: center;
+	position: relative;
+}
+.gallery_grid_item{
+	/*display: inline-block;*/
+	width: 300px;
+	width: 20%;
+	float: left;
+	height: 200px;
+	overflow: hidden;
+	padding: 5px 5px;
+	cursor: pointer;
+	position: relative;
+}
+
+/*.gallery_grid_item.is-2x{
+	width: 25%;
+	height: 250px;
+}*/
+.gallery_grid_item.is-vertical img{
+	max-height: 100%;
+}
+.gallery_grid_item a{
+	display: block;
+	position: relative;
+	overflow: hidden;
+	height: 100%;
+}
+.gallery_grid_item a img{
+	display: block;
+	position: absolute;
+	top: -50%;
+	bottom: -50%;
+	left: 0;
+	right: 0;
+	margin: auto;
+	transition:all .5s ease-in;
+	backface-visibility: hidden;
+	transform-style: preserve-3d;
+}
+.gallery_grid_item:hover{
+	/*transform:scale(1.1);*/
+}
+.gallery_grid_item_desc{
+	display: block;
+	position: absolute;
+	top: 100%;
+	bottom: 5px;
+	left: 5px;
+	right: 5px;
+	color:#fff;
+	opacity: 0;
+	background: rgba(0,0,0, .6);
+	box-sizing:border-box;
+	border:15px solid rgba(0,0,0, .25);
+	transition:all .3s linear;
+}
+.gallery_grid_item:hover .gallery_grid_item_desc{
+	top:5px;
+	/*left: 5px;*/
+	opacity: 1;
+}
+.gallery_grid_item_desc table{
+	height: 100%;
+	width: 100%;
+}
+.gallery_grid_item_desc table td{
+	vertical-align: middle;
+}
+.gallery_grid_item_desc table td p{
+	font-size: .9em;
+}
+.gallery_grid_item_desc table td p:first-child{
+	/*font-weight: bold;*/
+	font-size: 1.15em;
+	font-weight: 400;
+}
+.gallery_grid_item_desc table td p:first-child:after{
+	content: '';
+	display: block;
+	width: 50px;
+	height: 1px;
+	background: #fff;
+	margin: 5px auto 2px;
+}
+
+.gallery_grid.album-view .gallery_grid_item{
+	position: relative;
+}
+.gallery_grid.album-view .gallery_grid_item img{
+	max-width: 100%;
+	max-height: 100%;
+	border:3px solid transparent;
+}
+.gallery_grid.album-view .gallery_grid_item:hover img{
+	border-color:#08bfff;
+}
+
+
+@media screen and (min-width: 1500px){
+	.gallery_grid_item{
+		height: 265px;
+	}
+	.portfolio-page_header+*{
+		padding-top: 9% !important;
+	}
+}
+
+@media screen and (max-width: 1366px){
+	.gallery_grid_item{
+		width: 25%;
+	}
+}
+
+@media screen and (max-width: 1025px){
+	.gallery_grid_item{
+		width: 33.3%;
+	}
+	.portfolio-page_header+*{
+		padding-top: 12% !important;
+	}
+}
+
+@media screen and (max-width: 769px){
+	.gallery_grid_item{
+		width: 50%;
+	}
+	.portfolio-page_header+*{
+		padding-top: 20% !important;
+	}
+}
+@media screen and (max-width: 600px){
+	.gallery_grid_item{
+		width: 100%;
+		height: auto;
+	}
+	.gallery_grid_item figure img{
+		position: static;
+	}
+}
+
+.album-title{
+	font-size: 1.5em;
+	/*font-weight: 400;*/
+	/*font-weight: bold;*/
+}
+.album-title >span{
+	border-bottom: 1px solid #08bfff;
+	margin-bottom: 7px;
+	padding-bottom: 7px;
+	display: inline-block;
+}
+
+.portfolio-page_header{
+	padding: 30px 0 25px;
+	/*margin-bottom: 40px;*/
+	background: #fff;
+	/*border-bottom: 1px solid ;*/
+	box-shadow: 0 2px 3px rgba(0,0,0, .3);
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+}
+
+.portfolio-page_header+*{
+	/*padding-top: 160px;*/
+	padding-top: 11%;
+}
