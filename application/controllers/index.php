@@ -29,7 +29,7 @@ class Index extends MY_base_controller{
     {
         $this->load->model('albums_model');
         $this->menu_item = 'portfolio';
-        $this->render_view('portfolio', [], ['page_title' => $this->page_title], 'index');
+        $this->render_view('portfolio_list', [], ['page_title' => $this->page_title], 'index');
     }
 
     public function portfolio($slug)

@@ -29,6 +29,9 @@
 	<link rel="stylesheet" href="https://cdn.rawgit.com/daneden/animate.css/master/animate.css">
 	<?= css('blockScroll.css')?>
 	<?= css('jquery.custom-scrollbar.css')?>
+	<?= css('photoswipe.css')?>
+	<?= css('photoswipe_default-skin/default-skin.css')?>
+	
 	<?= css('main.css')?>
 	<?= css('common.css')?>
 	<script type="text/javascript"> var contacts = '<?=isset($contacts) ? $contacts : 0;?>'</script>
