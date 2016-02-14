@@ -10,7 +10,9 @@
 <header class="portfolio-page_header">
 	<div class="container-fluid">
 	  <div class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 text-center">
-	    <img src="assets/images/logo_on-dark.png" alt="">
+		  <a href="/">
+		    <img src="assets/images/logo_on-dark.png" alt="">		  	
+		  </a>
 	  </div>
 	</div>
 </header>
