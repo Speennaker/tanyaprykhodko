@@ -29,7 +29,7 @@ class Index extends MY_base_controller{
     {
         $this->load->model('albums_model');
         $this->menu_item = 'portfolio';
-        $this->render_view('portfolio_list', [], ['page_title' => $this->page_title], 'index');
+        $this->render_view('portfolio_list', [], ['page_title' => $this->page_title, 'albums' => $this->albums_model->get_list($this->current_language_short)], 'index');
     }
 
     public function portfolio($slug)
@@ -117,7 +117,7 @@ class Index extends MY_base_controller{
         ";
         $headers  = 'MIME-Version: 1.0' . "\r\n";
         $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-        $headers .= 'From: Server <n.denisoff@mail.ru>' . "\r\n";
+        $headers .= 'From: Server <'.FORM_SENDER.'>' . "\r\n";
         if(mail(FORM_RECIPIENT, 'Сообщение с сайта', $letter, $headers))
         {
             echo 'TRUE';

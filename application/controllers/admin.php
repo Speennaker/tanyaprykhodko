@@ -26,7 +26,6 @@ class Admin extends MY_base_controller{
         parent::__construct('admin');
         $this->languages = $this->languages_model->get_languages();
         $this->load->model('albums_model');
-        $this->albums_model->default_cover = $this->default_cover;
         $this->load->helper('string');
         $this->bulk_actions = [
             'separated' =>

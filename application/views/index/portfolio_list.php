@@ -7,30 +7,33 @@
 <!-- portfloio grid -->
 <section>
 	<div class="gallery_grid clearfix">
-		<!-- portfolio item  -->
-		<figure class="gallery_grid_item is-2x">
-			<!-- link -->
-			<a href="portfolio/portfolio_Id">
-	      <div class="img-wrap">
-		      <!-- image -->
-	        <img src="https://unsplash.it/700/500?image=11" alt="Image description" itemprop="thumbnail">
-	      </div>
-	      <!-- info -->
-	      <div class="gallery_grid_item_desc">
-	      	<table>
-	      		<tr>
-	      			<td>
-		      			<!-- name -->
-	      				<p>Album Name</p>
-	      				<!-- description -->
-			        	<p>Shot Album Description</p>
-	      			</td>
-	      		</tr>
-	      	</table>
-	      </div>
-			</a>
-    </figure>
-		<!-- / portfolio item  -->
+		<?php foreach($albums as $album):?>
+
+			<!-- portfolio item  -->
+			<figure class="gallery_grid_item is-2x">
+				<!-- link -->
+				<a href="<?=base_url('portfolio/'.$album['breadcrumb'])?>">
+					<div class="img-wrap">
+						<!-- image -->
+						<img src="<?=$album['cover']?>" alt="<?=$album['title']?>" itemprop="thumbnail">
+					</div>
+					<!-- info -->
+					<div class="gallery_grid_item_desc">
+						<table>
+							<tr>
+								<td>
+									<!-- name -->
+									<p><?=$album['title']?></p>
+									<!-- description -->
+									<p><?=$album['description']?></p>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</a>
+			</figure>
+			<!-- / portfolio item  -->
+		<?php endforeach;?>
 
 
 	</div>

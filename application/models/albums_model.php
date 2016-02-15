@@ -4,7 +4,7 @@ class Albums_model extends MY_base_model
 {
    /** @var  albums_texts_model */
     public $albums_texts_model;
-    public $default_cover;
+    public $default_cover = 'assets/images/no_picture.png';
 
     public function __construct()
     {
@@ -50,7 +50,6 @@ class Albums_model extends MY_base_model
         $this->db->join($CI->languages_model->table.' l', 'l.id = at.languages_id');
         $result = $this->db->get_where($this->table.' a',['a.breadcrumb' => $slug, 'l.code' => $language])->row_array();
         if(!$result) return $result;
-//        $result['texts'] = $this->albums_texts_model->get_albums_text($result['id'], $language);
         $result['photos_list'] = $this->get_albums_images($result['id']);
         $result['photos'] = count($result['photos_list']);
         return $result;
@@ -81,6 +80,29 @@ class Albums_model extends MY_base_model
 
         }
 
+        return $results;
+    }
+
+    public function get_list($language, $active_only = true)
+    {
+        /** @var  $CI Index */
+        $CI = &get_instance();
+        $this->db->select('a.*, at.title, at.description');
+        $this->db->join($this->albums_texts_model->table.' at', 'at.albums_id = a.id ');
+        $this->db->join($CI->languages_model->table.' l', 'l.id = at.languages_id');
+        $this->db->where('l.code', $language);
+        if($active_only) $this->db->where('active', 1);
+        $results = $this->db->get($this->table.' a')->result_array();
+        if(!$results) return $results;
+        foreach($results as $k => &$result)
+        {
+            $id = $result['id'];
+            $path = asset_path()."/images/albums/$id/main.png";
+            $result['cover'] = file_exists($path) ? base_url("assets/images/albums/$id/main.png") : base_url($this->default_cover);
+            $result['photos'] = count($this->get_albums_images($id));
+            if(!$result['photos']) unset($results[$k]);
+
+        }
         return $results;
     }
 
