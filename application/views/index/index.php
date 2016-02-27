@@ -95,7 +95,7 @@
 		<!-- 8 -->
 		<section class="b_section-wrap b_section_contacts blurred is-7 color-light" data-id="9">
 			<div class="toAnimate" data-animtype="slideInDown" data-animdyration="400">
-				<p class="b_section_title is-white">Sopthistication</p>
+				<p class="b_section_title is-white">Sophistication</p>
 			</div>
 		</section>
 		<!-- /8 -->

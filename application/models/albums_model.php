@@ -106,7 +106,7 @@ class Albums_model extends MY_base_model
         return $results;
     }
 
-    private function get_albums_images($id)
+    public function get_albums_images($id)
     {
         $path = asset_path().'/images/albums/'.$id;
         if(!is_dir($path)) return [];

@@ -14,13 +14,12 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema tanyapryhodko
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `tanyapryhodko` DEFAULT CHARACTER SET utf8 ;
-USE `tanyapryhodko` ;
+
 
 -- -----------------------------------------------------
--- Table `tanyapryhodko`.`albums`
+-- Table `albums`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tanyapryhodko`.`albums` (
+CREATE TABLE IF NOT EXISTS `albums` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `active` TINYINT(1) NOT NULL DEFAULT 0,
   `breadcrumb` VARCHAR(45) NOT NULL,
@@ -30,9 +29,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `tanyapryhodko`.`languages`
+-- Table `languages`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tanyapryhodko`.`languages` (
+CREATE TABLE IF NOT EXISTS `languages` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `code` VARCHAR(45) NOT NULL,
   `title` VARCHAR(45) NOT NULL,
@@ -42,9 +41,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `tanyapryhodko`.`users`
+-- Table `users`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tanyapryhodko`.`users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
@@ -56,9 +55,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `tanyapryhodko`.`albums_texts`
+-- Table `albums_texts`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tanyapryhodko`.`albums_texts` (
+CREATE TABLE IF NOT EXISTS `albums_texts` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
   `description` VARCHAR(255) NULL,
@@ -69,12 +68,12 @@ CREATE TABLE IF NOT EXISTS `tanyapryhodko`.`albums_texts` (
   INDEX `fk_albums_texts_albums1_idx` (`albums_id` ASC),
   CONSTRAINT `fk_albums_texts_languages`
     FOREIGN KEY (`languages_id`)
-    REFERENCES `tanyapryhodko`.`languages` (`id`)
+    REFERENCES `languages` (`id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_albums_texts_albums1`
     FOREIGN KEY (`albums_id`)
-    REFERENCES `tanyapryhodko`.`albums` (`id`)
+    REFERENCES `albums` (`id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -85,23 +84,23 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Data for table `tanyapryhodko`.`languages`
+-- Data for table `languages`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `tanyapryhodko`;
-INSERT INTO `tanyapryhodko`.`languages` (`id`, `code`, `title`, `enabled`) VALUES (1, 'ru', 'Русский', 1);
-INSERT INTO `tanyapryhodko`.`languages` (`id`, `code`, `title`, `enabled`) VALUES (2, 'en', 'English', 1);
-INSERT INTO `tanyapryhodko`.`languages` (`id`, `code`, `title`, `enabled`) VALUES (3, 'ar', ' العَرَبِية', 1);
+
+INSERT INTO `languages` (`id`, `code`, `title`, `enabled`) VALUES (1, 'ru', 'Русский', 1);
+INSERT INTO `languages` (`id`, `code`, `title`, `enabled`) VALUES (2, 'en', 'English', 1);
+INSERT INTO `languages` (`id`, `code`, `title`, `enabled`) VALUES (3, 'ar', ' العَرَبِية', 1);
 
 COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `tanyapryhodko`.`users`
+-- Data for table `users`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `tanyapryhodko`;
-INSERT INTO `tanyapryhodko`.`users` (`id`, `username`, `password`, `name`, `role`, `email`) VALUES (DEFAULT, 'tanya_admin', '84334f499b6d57ad9653cd2a16d5b9a0', 'Tanya', 1, 'info@tanyapryhodko.com');
+
+INSERT INTO `users` (`id`, `username`, `password`, `name`, `role`, `email`) VALUES (DEFAULT, 'tanya_admin', '84334f499b6d57ad9653cd2a16d5b9a0', 'Tanya', 1, 'info@tanyapryhodko.com');
 
 COMMIT;
 

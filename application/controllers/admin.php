@@ -124,6 +124,7 @@ class Admin extends MY_base_controller{
                 if($data['cover']) $data['cover_path'] = base_url($this->upload_path.$data['cover']);
 
             }
+            $data['photos'] = count($this->albums_model->get_albums_images($id));
         }
         else
         {
