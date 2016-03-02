@@ -90,7 +90,7 @@ START TRANSACTION;
 
 INSERT INTO `languages` (`id`, `code`, `title`, `enabled`) VALUES (1, 'ru', 'Русский', 1);
 INSERT INTO `languages` (`id`, `code`, `title`, `enabled`) VALUES (2, 'en', 'English', 1);
-INSERT INTO `languages` (`id`, `code`, `title`, `enabled`) VALUES (3, 'ar', ' العَرَبِية', 1);
+-- INSERT INTO `languages` (`id`, `code`, `title`, `enabled`) VALUES (3, 'ar', ' العَرَبِية', 1);
 
 COMMIT;
 
@@ -100,7 +100,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 
-INSERT INTO `users` (`id`, `username`, `password`, `name`, `role`, `email`) VALUES (DEFAULT, 'tanya_admin', '84334f499b6d57ad9653cd2a16d5b9a0', 'Tanya', 1, 'info@tanyapryhodko.com');
+INSERT INTO `users` (`id`, `username`, `password`, `name`, `role`, `email`) VALUES (DEFAULT, 'tanya_admin', '84334f499b6d57ad9653cd2a16d5b9a0', 'Tanya', 1, 'info@tanyaprykhodko.com');
 
 COMMIT;
 
