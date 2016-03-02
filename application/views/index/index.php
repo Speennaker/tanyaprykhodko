@@ -2,7 +2,7 @@
 <div id="loader-wrapper">
 	<div id="loader"></div><div class="loader-section section-left"></div><div class="loader-section section-right"></div>
 </div>
-<a href="#" class="b_portfolio-label"><span><?= lang('portfolio')?></span></a>
+<a href="<?=base_url('portfolio')?>" class="b_portfolio-label"><span><?= lang('portfolio')?></span></a>
 <!-- [ wrapper -->
 <div class="b_page-wrap">
 	<div class="b_sections-container">
@@ -12,7 +12,7 @@
 				<div class="toAnimate" data-animtype="fadeInDown" data-animdyration="400">
 					<div class="row">
 						<div class="col-lg-10 avatar_wrap col-lg-offset-1 col-md-10 col-md-offset-1">
-							<p><img src="<?=asset_url()?>/images/logo_on-dark.png" alt="Tania Prichodko"></p>
+							<p><img src="<?=asset_url()?>/images/logo_on-dark.png" alt="Tania Prykhodko"></p>
 						</div>
 					</div>
 				</div>

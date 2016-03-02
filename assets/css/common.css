@@ -700,6 +700,7 @@ bottom: 0;
 }*/
 .b_portfolio-label span{
 	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
 	display: block;
 	position: absolute;
 	top: 35px;
