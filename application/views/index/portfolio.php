@@ -20,7 +20,7 @@
 				<!-- grid item -->
 				<figure class="gallery_grid_item" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">
 					<!-- link -->
-					<a href="<?=$photo?>" itemprop="contentUrl" data-size="1500x1050">
+					<a href="<?=$photo?>" itemprop="contentUrl">
 						<!-- image -->
 						<img src="<?=$photo?>" alt="Image description" itemprop="thumbnail">
 					</a>
