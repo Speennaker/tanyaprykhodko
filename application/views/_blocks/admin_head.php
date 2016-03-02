@@ -7,7 +7,10 @@
             <a class="navbar-brand" href="<?= base_url()?>">Tanya Prykhodko</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
-            <form class="navbar-form navbar-right">
+            <form class="navbar-form navbar-right" style="padding-top: 8px">
+                <div class="form-group">
+                    <a class="btn btn-warning" href="<?= base_url($this->module.'/password_change')?>" >Сменить Пароль</a>
+                </div>
                 <div class="form-group">
                     <a class="btn btn-danger" href="<?= base_url('login/logout')?>" >Выйти</a>
                 </div>

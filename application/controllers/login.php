@@ -42,6 +42,7 @@ class Login extends MY_base_controller {
         $user = $this->users_model->get_auth_user($login, $password);
         if(!$user) return false;
         $this->session->set_userdata('logged_in', TRUE);
+        $this->session->set_userdata('username', $user['username']);
         redirect(base_url('admin'));
 
 

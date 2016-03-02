@@ -316,3 +316,7 @@ strong{
     font-size: 150%;
     padding: 30%;
 }
+
+small{
+    font-size: 70% !important;
+}

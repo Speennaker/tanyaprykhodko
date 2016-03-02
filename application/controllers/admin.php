@@ -169,6 +169,50 @@ class Admin extends MY_base_controller{
         if($return) return implode('', $page);
     }
 
+    public function password_change()
+    {
+        if(!$this->session->userdata('logged_in')) redirect(base_url('login'));
+        $this->load->model('users_model');
+        $data = ['errors'=>[]];
+        if($this->input->post())
+        {
+            $errors = [];
+            if(!$this->input->post('pword'))
+            {
+                $errors['pword'] = 'Введите текущий пароль!';
+            }
+            if(!$this->input->post('pword_new'))
+            {
+                $errors['pword_new'] = 'Введите новый пароль!';
+            }
+            if(!$this->input->post('pword_new_confirm'))
+            {
+                $errors['pword_new_confirm'] = 'Введите подтверждение нового пароля!';
+            }
+            $user = $this->users_model->get_auth_user($this->session->userdata('username'), $this->input->post('pword'));
+            if(!$user)
+            {
+                $errors[] = 'Неверный текущий пароль!';
+            }
+            if(!$errors && $this->input->post('pword_new_confirm') != $this->input->post('pword_new'))
+            {
+                $errors['pword_new_confirm'] = 'Пароли не совпадают';
+            }
+            if(!$errors)
+            {
+                $this->users_model->update_password($user['id'],$this->input->post('pword_new') );
+            }
+            if(!$errors)
+            {
+                $this->session->set_flashdata('success', ['title' => 'Успех!', 'text' => 'Пароль успешно изменен']);
+                redirect(base_url('admin'));
+            }
+            $this->session->set_flashdata('danger', ['title' => 'Ошибка!', 'text' => implode('<br><br>', $errors)]);
+            $data['errors'] = $errors;
+        }
+        $this->render_view('password_change', [], $data, $this->module);
+    }
+
     protected function prepare_data()
     {
         $data['font_color'] = $this->input->post('font_color');

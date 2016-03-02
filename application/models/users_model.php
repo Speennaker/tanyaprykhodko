@@ -14,4 +14,11 @@ class Users_model extends MY_base_model
         $this->db->where('password', md5($password));
         return $this->db->get($this->table)->row_array();
     }
+
+    public function update_password($id, $password)
+    {
+        $this->db->where('id', $id);
+        $this->db->set('password', md5($password));
+        return $this->db->update($this->table);
+    }
 }
