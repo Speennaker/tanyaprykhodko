@@ -36,7 +36,9 @@ class Index extends MY_base_controller{
     {
         $this->load->model('albums_model');
         $this->menu_item = 'portfolio';
-        $this->render_view('portfolio', [], ['page_title' => $this->page_title, 'album' => $this->albums_model->get_album_by_slug($slug, $this->current_language_short)], 'index');
+        $album = $this->albums_model->get_album_by_slug($slug, $this->current_language_short);
+        if(!$album)redirect(base_url('portfolio'));
+        $this->render_view('portfolio', [], ['page_title' => $this->page_title, 'album' => $album], 'index');
     }
 
 
