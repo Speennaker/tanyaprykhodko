@@ -87,3 +87,22 @@
 <?= js('photoswipe/photoswipe.js')?>
 <?= js('photoswipe/photoswipe-ui-default.js')?>
 <?= js('photoswipe/init.js')?>
+<script>
+  $(function() {
+    setHeightForImgs();
+
+    function setHeightForImgs(){
+      var imgs = $('.gallery_grid_item');
+      imgs.css({
+        'height':imgs.eq(0).width()+'px'
+      });
+    };
+    $(window).on('resize', function(event) {
+      if(window.innerWidth > 600){
+        setHeightForImgs();
+      }else{
+        $('.gallery_grid_item').css('height','auto');
+      }
+    });
+  });
+</script>
