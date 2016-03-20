@@ -163,11 +163,13 @@
       setTimeout(function(){
         $(theDivs[activeDiv]).removeClass('blurred');
       }, 500);
-      $('.b_page-nav').addClass('is_shown');
+      if (window.innerWidth > 767) {
+        $('.b_page-nav').addClass('is_shown');
+        time = setTimeout(function(){
+          $('.b_page-nav').removeClass('is_shown');
+        }, 3000);
+      }
 
-      time = setTimeout(function(){
-        $('.b_page-nav').removeClass('is_shown');
-      }, 3000);
     }
 
     function calcTriggers()

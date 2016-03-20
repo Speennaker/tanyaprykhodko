@@ -74,7 +74,7 @@ body{
 	font-weight: 300;
 	/*font-family: 'Open Sans', sans-serif;*/
   /*font-family: 'Roboto', 'Open Sans', sans-serif;*/
-  font-family: 'Exo 2', sans-serif;
+	font-family: 'Exo 2', sans-serif;
 	font-size: 18px;
 	line-height: 1.3;
 }
@@ -739,6 +739,9 @@ bottom: 0;
 }
 
 @media screen and (max-width: 767px){
+	.b_page-nav_list ul{
+		display: block;
+	}
 	.b_page-nav_list ul li{
 		display: block;
 		border-bottom: 1px solid #fff;
@@ -759,10 +762,18 @@ bottom: 0;
 	.b_page-nav{
 		opacity: 1;
 	}
+	.b_section_title{
+		font-size: 75px;
+	}
+}
+@media screen and (max-width: 500px){
+	.b_section_title{
+		font-size: 55px !important;
+	}
 }
 @media screen and (max-width: 767px){
 	.b_page-wrap{
-		overflow-x: hidden;
+		/*overflow-x: hidden;*/
 	}
 }
 
