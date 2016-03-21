@@ -114,7 +114,7 @@
 				<div class="b_section_content_wrap">				
 						<div class="row">
 							<div class="b_section_content">
-								<div class="col-sm-3">
+								<div class="col-md-3 col-sm-4 contacts-table_wrap">
 									<table class="contacts-table">
 										<tr>
 											<td><span class='i-entypo'>&#xe724;</span></td>
@@ -131,7 +131,7 @@
 										</tr>
 									</table>
 								</div>
-								<div class="col-sm-9">
+								<div class="col-md-9 col-sm-8">
 									<div class="default-skin" id="contact_ov">
 										<p class="b_section_title is-without_line"><?= lang('contacts')?>:</p>
 										<br>
@@ -175,12 +175,6 @@
 					</div>
 				</div>
 			</section>
-			<script>
-			(function(){
-				var el = document.querySelector('#contact_ov.default-skin');
-				el.style.height = (window.innerHeight - 50)+'px';
-			})();
-			</script>
 			<!-- / end contact section -->
 
 			<!-- page arrows -->
@@ -198,6 +192,22 @@
 			<!-- navigation -->
 			<?=$this->load->view('_blocks/nav_panel', [], true);?>
 			<!-- /navigation -->
+
+			<script>
+			(function(){
+				function setHeiightForForm(){
+					var el = document.querySelector('#contact_ov.default-skin');
+					var innerHeight = 
+							window.innerWidth < 767 ? 
+							(document.querySelector('.contacts-table_wrap').clientHeight + document.querySelector('.b_page-nav_wrapper').clientHeight) :
+							50 ;
+					el.style.height = (window.innerHeight - innerHeight)+'px';
+				};
+				setHeiightForForm();
+				window.addEventListener('resize', setHeiightForForm, false);
+
+			})();
+			</script>
 	</div>
 </div>
 <!-- wrapper ] -->
