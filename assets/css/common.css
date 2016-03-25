@@ -768,6 +768,9 @@ bottom: 0;
 	.textarea.form-control{
 		max-width: 96%;
 	}
+	.b_section-wrap{
+		background-attachment: scroll;
+	}
 }
 @media screen and (max-width: 500px){
 	.b_section_title{
