@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  
   // create vertical dots
   (function(){
     var imgs = $('.b_section-wrap');

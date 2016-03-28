@@ -36,7 +36,7 @@
 
     arrange();
     // Fade in the first div
-    $(theDivs[activeDiv]).animate({opacity: 1},settings.fadeDuration,'linear', function() { 
+    $(theDivs[activeDiv]).animate({opacity: 1},((window.innerWidth < 769) ? 0 : settings.fadeDuration),'linear', function() { 
       $(window).scrollTop(0);
       calcTriggers();
       bindEvents();
@@ -120,7 +120,7 @@
           $(val).removeClass().addClass($(val).data('animtype') + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
             $(this).removeClass();
           });
-        }, $(val).data('animdyration'));
+        },  ((window.innerWidth < 769) ? 0 : $(val).data('animdyration')));
       });
 
     };
@@ -144,11 +144,12 @@
       }
 
       activelyScrolling = true;
-      $('html, body').animate({scrollTop: $(theDivs[activeDiv]).offset().top}, settings.scrollDuration, 'linear', function() {
-        $(theDivs[activeDiv]).animate({opacity: 1}, settings.fadeDuration,'linear', function() { 
+      $('html, body').animate({scrollTop: $(theDivs[activeDiv]).offset().top}, ((window.innerWidth < 769) ? 0 : settings.scrollDuration), 'linear', function() {
+        $(theDivs[activeDiv]).animate({opacity: 1}, ((window.innerWidth < 769) ? 0 : settings.fadeDuration),'linear', function() { 
           setTimeout(function(){
-            activelyScrolling = false; lastScrollPos = $(window).scrollTop(); 
-          },50);
+            activelyScrolling = false; 
+            lastScrollPos = $(window).scrollTop(); 
+          },0);
         });
       });
       $('.b_page-nav_list ul').eq(0).find('a').removeClass();
@@ -162,7 +163,7 @@
       calcTriggers();
       setTimeout(function(){
         $(theDivs[activeDiv]).removeClass('blurred');
-      }, 500);
+      }, ((window.innerWidth < 769) ? 0 : 500));
       if (window.innerWidth > 767) {
         $('.b_page-nav').addClass('is_shown');
         time = setTimeout(function(){

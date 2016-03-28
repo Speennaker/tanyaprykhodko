@@ -4,7 +4,7 @@
 	<!-- meta -->
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<meta content="IE=edge" http-equiv="X-UA-Compatible">
-	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
  	<title><?=$page_title?></title>
 	<?= js('jquery/jquery.js')?>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -39,3 +39,4 @@
 	<link href='https://fonts.googleapis.com/css?family=Exo+2:400,300,100,200,500,600,700,300italic,500italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 </head>
 <body class="<?=$this->custom_body_class?>">
+<div class="body-wrap">
