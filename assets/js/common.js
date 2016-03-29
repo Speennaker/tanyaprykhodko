@@ -23,6 +23,18 @@ $(document).ready(function () {
   // init cusom scrollbar
   $(".default-skin").customScrollbar();
 
+  $('#toogleMenu').click(function(e){
+    e.preventDefault();
+    // console.log('sdfds');
+    $('#mainMenu').toggle();
+    // $(this).data('action') == 'show' ? $(this).data('action', 'hide') : $(this).data('action', 'show');
+    // console.log($(this).data('action'));
+  });
+
+  // $('#mainMenu').on('shown.bs.collapse', function () {
+  //   console.log('asdsad');
+  // });  
+
   // remove loader form page
   setTimeout(function(){
     $('body').addClass('loaded');
@@ -45,7 +57,11 @@ $(document).ready(function () {
     links.bind('click', function(e){
       e.preventDefault();
       var n = $(this).data('href');
-      $('html, body').animate({scrollTop: $('[data-id='+n+']').offset().top}, 2000);
+      $('html, body').animate({scrollTop: $('[data-id='+n+']').offset().top}, 2000, function(){
+        if ($('#mainMenu').css('display') == 'block') {
+          $('#mainMenu').toggle();
+        }
+      });
     });
     if(contacts == '1')
     {

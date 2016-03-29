@@ -2,9 +2,9 @@
     <div class="b_page-nav navbar navbar-fixed-bottom is_shown">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><?= lang('menu')?></button>
+                <button type="button" class="navbar-toggle collapsed" data-action="show" id="toogleMenu" data-target="#" aria-expanded="false"><?= lang('menu')?></button>
             </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse" id="mainMenu">
                 <nav class="b_page-nav_list navbar-left">
                     <ul>
                         <?php foreach($menus as $key => $menu):?>
