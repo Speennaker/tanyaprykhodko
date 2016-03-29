@@ -1427,7 +1427,7 @@ opacity: .9;
 		width: 50%;
 	}
 	.portfolio-page_header+*{
-		padding-top: 20% !important;
+		padding-top: 25% !important;
 	}
 }
 @media screen and (max-width: 600px){
