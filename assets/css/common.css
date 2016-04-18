@@ -825,6 +825,15 @@ bottom: 0;
 	.textarea.form-control{
 		max-width: 96%;
 	}
+	.b_section-wrap.is-6,
+	.b_section-wrap.is-12{
+		position: relative;
+	}
+	.b_section-wrap.is-6 .b_section_title,
+	.b_section-wrap.is-12 .b_section_title{
+		position: absolute;
+		bottom: 69px;
+	}	
 	
 }
 @media screen and (max-width: 500px){
